@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Blogger</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js"></script>
+    </head>
+
+    <body>
+        <header>
+        <h1>BLOGGER</h1>
+            <button id="sign-in-or-out-button">Anmelden</button>
+            <div id="auth-status"></div><hr>
+        </header>
+        <main id="main-section">TODO write content</main>
+
+        <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
+        <div id="templates" hidden>
+            <div id="user-info-loggedIn-scheme">
+                <p><strong>User: </strong>%name</p>
+                <button type="button">Abmelden</button>
+            </div>
+    
+            <nav id="blog-overview-scheme">
+                <ul>
+                    <li>
+                        <a href=%path>%blogname (%postCount)</a>
+                    </li>
+                </ul>
+            </nav>
+    
+            <div id="blog-info-scheme">
+                <h2>%blogname</h2>
+                <p>%postCount</p>
+                <p>%creationDate</p>
+                <p>%alterationDate</p>
+            </div>
+    
+            <div id="post-overview-scheme">
+                <div id="new-post-button">
+                    <button type="button">Neuer Post</button>
+                </div>
+    
+                <article id="post-info-scheme">
+                    <header>
+                        <h2>%postname</h2>
+                    </header>
+                    <section>
+                        <p>%creationDate</p>
+                        <p>%alterationDate</p>
+                        <p>%commentCount</p>
+                    </section>
+                    <footer>
+                        <nav id="post-buttons">
+                            <button type="button">Edit</button>
+                            <button type="button">Delete</button>
+                        </nav>
+                    </footer>
+                </article>
+            </div>
+    
+            <div id="post-detail-scheme">
+                <article>
+                    <header>
+                        <h2>%postname</h2>
+                        <p>%creationDate</p>
+                        <p>%alterationDate</p>
+                    </header>
+                    <section>
+                        <p>%postText</p>
+                        <figure>
+                            <figcaption>Bilder zum Post</figcaption>
+                            <img src="" height=""width="" alt="" />
+                        </figure>
+                    </section>
+                    <footer>
+                        <nav id="post-detail-buttons">
+                            <button type="button">Zurück zur Übersicht</button>
+                            <button type="button">Edit</button>
+                            <button type="button">Delete</button>
+                        </nav>
+                    </footer>
+                </article>
+            </div>
+    
+            <div id="comment-section-scheme">
+                <h2>Kommentare</h2>
+    
+                <article id="comment">
+                    <header>
+                        <p>%creatorName</p>
+                        <p>%creationDate</p>
+                    </header>
+                    <section>
+                        <p>%commentText</p>
+                    </section>
+                    <footer>
+                        <button type="button">Delete</button>
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>
