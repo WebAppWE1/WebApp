@@ -8,6 +8,7 @@
 const presenter = (function () {
     // Private Variablen und Funktionen
     let init = false;
+    let owner = null;
     let blogId = 0;
 
     // Initialisiert die allgemeinen Teile der Seite
@@ -34,7 +35,7 @@ const presenter = (function () {
     
         // Nutzer abfragen und Anzeigenamen als owner setzen
         model.getSelf((result) => {
-            let owner = result.displayName;
+            owner = result.displayName;
             console.log(`Presenter: Nutzer*in ${owner} hat sich angemeldet.`);
         });
         
@@ -45,11 +46,10 @@ const presenter = (function () {
     // und der Login-Button angezeigt wird.
     function loginPage() {
         console.log("Presenter: Aufruf von loginPage()");
-        if(owner!== undefined) console.log(`Presenter: Nutzer*in ${owner} hat sich abgemeldet.`);
+        if(owner !== undefined) console.log(`Presenter: Nutzer*in ${owner} hat sich abgemeldet.`);
         init = false;
-        blogId = -1;
-        postId = -1;
-        owner = undefined;
+        replace('blog-overview');
+        replace('blog-detail-info');
     }
     // Tauscht Templates in Bereichen aus, die durch die id-Wert bestimmt werden
     function replace(id, newContent) {
