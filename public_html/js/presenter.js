@@ -67,6 +67,13 @@ const presenter = (function () {
         postId = -1;
         owner = undefined;
     }
+    // Tauscht Templates in Bereichen aus, die durch die id-Wert bestimmt werden
+    function replace(id, newContent) {
+        let section = document.getElementById(id);
+        let oldContent = section.firstElementChild;
+        if (oldContent) oldContent.remove();
+        if (newContent) section.append(newContent);
+    }
 
 
     //Oeffentliche Methoden
