@@ -11,6 +11,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script async defer src="https://apis.google.com/js/api.js"></script>
+
+        <script defer src="js/login.js"></script>
+        <script defer src="js/model.js"></script>
+        <script defer src="js/presenter.js"></script>
+        <script defer src="js/router.js"></script>
+        <script defer src="js/view.js"></script>
     </head>
 
     <body>
@@ -18,6 +24,8 @@ and open the template in the editor.
         <h1>BLOGGER</h1>
             <button id="sign-in-or-out-button">Anmelden</button>
             <div id="auth-status"></div><hr>
+            <div id="blog-overview"></div>
+            <div id="blog-detail-info"></div>
         </header>
         <main id="main-section">TODO write content</main>
 
@@ -39,8 +47,8 @@ and open the template in the editor.
             <div id="blog-info-scheme">
                 <h2>%blogname</h2>
                 <p>%postCount</p>
-                <p>%creationDate</p>
-                <p>%alterationDate</p>
+                <p>%formatedCreationDate</p>
+                <p>%formatedAlterationDate</p>
             </div>
     
             <div id="post-overview-scheme">
