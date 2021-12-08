@@ -27,7 +27,7 @@ and open the template in the editor.
             <div id="blog-overview"></div>
             <div id="blog-detail-info"></div>
         </header>
-        <main id="main-section">TODO write content</main>
+        <main id="main-section"></main>
 
         <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
         <div id="templates" hidden>
@@ -61,9 +61,9 @@ and open the template in the editor.
                         <h2>%postname</h2>
                     </header>
                     <section>
-                        <p>%creationDate</p>
-                        <p>%alterationDate</p>
-                        <p>%commentCount</p>
+                        <p>%formatedCreationDate</p>
+                        <p>%formatedAlterationDate</p>
+                        <p>Kommentare: %commentCount</p>
                     </section>
                     <footer>
                         <nav id="post-buttons">
