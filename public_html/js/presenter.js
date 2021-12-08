@@ -28,15 +28,10 @@ const presenter = (function () {
         replace("blog-detail-info", element);
       });
 
-      model.getAllPostsOfBlog(blogId, (posts) => {
-          console.log("Post-overview wird aufgerufen...");
-          let element = postOverview.render(posts);
-          replace("main-section", element);
-      });
+      presenter.showPostOverview(blogId);
 
-      //Falls auf Startseite, navigieren zu Uebersicht
       if (window.location.pathname === "/")
-        router.navigateToPage("/blogOverview/" + blogId);
+      router.navigateToPage("/blogOverview/" + blogId);
     });
 
     // Nutzer abfragen und Anzeigenamen als owner setzen
@@ -48,6 +43,7 @@ const presenter = (function () {
     // Das muss später an geeigneter Stelle in Ihren Code hinein.
     init = true;
   }
+  
   // Sorgt dafür, dass bei einem nicht-angemeldeten Nutzer nur noch der Name der Anwendung
   // und der Login-Button angezeigt wird.
   function loginPage() {
@@ -87,5 +83,15 @@ const presenter = (function () {
     showBlogOverview(bid) {
       console.log(`Aufruf von presenter.showBlogOverview(${blogId})`);
     },
+
+    showPostOverview(bid) {
+      console.log(`Aufruf von presenter.showPostOverview von Blog ${bid}`);
+
+      // if (!init) initPage();
+      model.getAllPostsOfBlog(bid, (posts) => {
+        let element = postOverview.render(posts);
+        replace("main-section", element);
+      });
+    }
   };
 })();
