@@ -63,14 +63,33 @@ const postOverview = {
     let article = page.querySelector("article");
     article.remove();
     for (let value of data) {
-      let contentArticle = article.cloneNode(true);
-      page.append(contentArticle); 
+      let content = article.cloneNode(true);
+      page.append(content); 
       value.setFormatDates(false);
       helper.setDataInfo(page, value);
     }
 
     return page;
   },
+};
+
+const postDetail = {
+  render(data) {
+    console.log("View: render() von postDetail");
+    
+    let page = document
+      .getElementById("post-detail-scheme")
+      .cloneNode(true);
+    page.removeAttribute("id");
+    let article = page.querySelector("article");
+    article.remove();
+    let content = article.cloneNode(true);
+    page.append(content);
+    data.setFormatDates(false);
+    helper.setDataInfo(page, data);
+
+    return page;
+  }
 };
 
 /**

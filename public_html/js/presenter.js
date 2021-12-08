@@ -10,7 +10,7 @@ const presenter = (function () {
   let init = false;
   let owner = null;
   let blogId = 0;
-
+  
   // Initialisiert die allgemeinen Teile der Seite
   function initPage() {
     console.log("Presenter: Aufruf von initPage()");
@@ -28,7 +28,8 @@ const presenter = (function () {
         replace("blog-detail-info", element);
       });
 
-      presenter.showPostOverview(blogId);
+      //presenter.showPostOverview(blogId);
+      presenter.showPostDetail(blogId, "2673510346618126557");
 
       if (window.location.pathname === "/")
       router.navigateToPage("/blogOverview/" + blogId);
@@ -52,6 +53,7 @@ const presenter = (function () {
       console.log(`Presenter: Nutzer*in ${owner} hat sich abgemeldet.`);
     replace("blog-overview");
     replace("blog-detail-info");
+    replace("main-section");
     init = false;
   }
   // Tauscht Templates in Bereichen aus, die durch die id-Wert bestimmt werden
@@ -92,6 +94,16 @@ const presenter = (function () {
         let element = postOverview.render(posts);
         replace("main-section", element);
       });
+    },
+
+    showPostDetail(bid, pid) {
+      console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
+
+      // if (!init) initPage();
+      model.getPost(bid, pid, (post) => {
+        let element = postDetail.render(post);
+        replace("main-section", element);
+      })
     }
   };
 })();
