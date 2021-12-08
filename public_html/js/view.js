@@ -61,8 +61,12 @@ const postOverview = {
       .cloneNode(true);
     page.removeAttribute("id");
     let article = page.querySelector("article");
+    article.remove();
     for (let value of data) {
-      helper.setDataInfo(article, value);
+      let contentArticle = article.cloneNode(true);
+      page.append(contentArticle); 
+      value.setFormatDates(false);
+      helper.setDataInfo(page, value);
     }
 
     return page;
