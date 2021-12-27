@@ -100,19 +100,25 @@ const presenter = (function () {
       console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
 
       // if (!init) initPage();
+
+      // new div for adding detail and comment view to main-section
+      let detail = document.createElement("div");
+      detail.id = "detail";
+      document.getElementById("main-section").appendChild(detail);
+
+      let comment = document.createElement("div");
+      comment.id = "comment";
+      document.getElementById("main-section").appendChild(comment);
+
+      // model-methods to render the content
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
-        replace("main-section", element);
+        replace("detail", element);
       });
-    },
 
-    showCommentSection(bid, pid) {
-      console.log(`Aufuruf der presenter.showCommentSection von post ${pid}`);
-
-      // if (!init) initPage();
       model.getAllCommentsOfPost(bid, pid, (comments) => {
         let element = commentSection.render(comments);
-        replace("main-section", element);
+        replace("comment", element);
       });
     }
   };

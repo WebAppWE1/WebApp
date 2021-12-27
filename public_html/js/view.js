@@ -102,12 +102,14 @@ const commentSection = {
     page.removeAttribute("id");
     let article = page.querySelector("article");
     article.remove();
-    for (let value in data) {
+    for (let value of data) {
       let content = article.cloneNode(true);
       page.append(content);
-      value.setFormatDates(false);
+      value.setFormatDates(true);
       helper.setDataInfo(page, value);
     }
+
+    return page;
   }
 };
 
