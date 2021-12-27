@@ -28,7 +28,7 @@ const presenter = (function () {
         replace("blog-detail-info", element);
       });
 
-      //presenter.showPostOverview(blogId);
+      //uhz  presenter.showPostOverview(blogId);
       presenter.showPostDetail(blogId, "2673510346618126557");
 
       if (window.location.pathname === "/")
@@ -103,7 +103,17 @@ const presenter = (function () {
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
         replace("main-section", element);
-      })
+      });
+    },
+
+    showCommentSection(bid, pid) {
+      console.log(`Aufuruf der presenter.showCommentSection von post ${pid}`);
+
+      // if (!init) initPage();
+      model.getAllCommentsOfPost(bid, pid, (comments) => {
+        let element = commentSection.render(comments);
+        replace("main-section", element);
+      });
     }
   };
 })();

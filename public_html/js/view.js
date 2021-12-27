@@ -92,6 +92,25 @@ const postDetail = {
   }
 };
 
+const commentSection = {
+  render(data) {
+    console.log("View: render() von commentSection");
+
+    let page = document
+      .getElementById("comment-section-scheme")
+      .cloneNode(true);
+    page.removeAttribute("id");
+    let article = page.querySelector("article");
+    article.remove();
+    for (let value in data) {
+      let content = article.cloneNode(true);
+      page.append(content);
+      value.setFormatDates(false);
+      helper.setDataInfo(page, value);
+    }
+  }
+};
+
 /**
  * helper-Funktion für das Einfügen von Values in die Seiten-Templates
  */
