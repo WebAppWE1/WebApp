@@ -23,17 +23,20 @@ and open the template in the editor.
         <header>
         <h1>BLOGGER</h1>
             <button id="sign-in-or-out-button">Anmelden</button>
+            <div id="user-info"></div>
             <div id="auth-status"></div><hr>
             <div id="blog-overview"></div>
             <div id="blog-detail-info"></div><hr>
         </header>
-        <main id="main-section"></main>
+        <main id="main-section">
+            <div id="upper-part"></div>
+            <div id="lower-part"></div>
+        </main>
 
         <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
         <div id="templates" hidden>
             <div id="user-info-loggedIn-scheme">
-                <p><strong>User: </strong>%name</p>
-                <button type="button">Abmelden</button>
+                <p><strong>User: </strong>%displayName</p>
             </div>
     
             <nav id="blog-overview-scheme">

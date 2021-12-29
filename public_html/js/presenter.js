@@ -10,10 +10,19 @@ const presenter = (function () {
   let init = false;
   let owner = null;
   let blogId = 0;
+  let detail = false;
   
   // Initialisiert die allgemeinen Teile der Seite
   function initPage() {
     console.log("Presenter: Aufruf von initPage()");
+
+    // Nutzer abfragen und Anzeigenamen als owner setzen
+    model.getSelf((result) => {
+      owner = result.displayName;
+      console.log(`Presenter: Nutzer*in ${owner} hat sich angemeldet.`);
+      let element = loggedIn.render(result);
+      replace("user-info", element);
+    });
 
     model.getAllBlogs((blogs) => {
       console.log("Blog-Overview wird geladen...");
@@ -28,19 +37,13 @@ const presenter = (function () {
         replace("blog-detail-info", element);
       });
 
-      //uhz  presenter.showPostOverview(blogId);
+      //presenter.showPostOverview(blogId);
       presenter.showPostDetail(blogId, "2673510346618126557");
 
       if (window.location.pathname === "/")
       router.navigateToPage("/blogOverview/" + blogId);
     });
-
-    // Nutzer abfragen und Anzeigenamen als owner setzen
-    model.getSelf((result) => {
-      owner = result.displayName;
-      console.log(`Presenter: Nutzer*in ${owner} hat sich angemeldet.`);
-    });
-
+    
     // Das muss später an geeigneter Stelle in Ihren Code hinein.
     init = true;
   }
@@ -51,9 +54,12 @@ const presenter = (function () {
     console.log("Presenter: Aufruf von loginPage()");
     if (owner !== undefined)
       console.log(`Presenter: Nutzer*in ${owner} hat sich abgemeldet.`);
+    replace("user-info")
     replace("blog-overview");
     replace("blog-detail-info");
-    replace("main-section");
+    replace("upper-part");
+    if (detail) replace("lower-part");
+    
     init = false;
   }
   // Tauscht Templates in Bereichen aus, die durch die id-Wert bestimmt werden
@@ -79,6 +85,8 @@ const presenter = (function () {
         //Hier wird die Seite ohne Inhalt angezeigt
         loginPage();
       }
+
+      detail = false;
     },
 
     // Wird vom Router aufgerufen, wenn eine Blog-Übersicht angezeigt werden soll
@@ -92,8 +100,10 @@ const presenter = (function () {
       // if (!init) initPage();
       model.getAllPostsOfBlog(bid, (posts) => {
         let element = postOverview.render(posts);
-        replace("main-section", element);
+        replace("upper-part", element);
       });
+
+      detail = false;
     },
 
     showPostDetail(bid, pid) {
@@ -101,25 +111,18 @@ const presenter = (function () {
 
       // if (!init) initPage();
 
-      // new div for adding detail and comment view to main-section
-      let detail = document.createElement("div");
-      detail.id = "detail";
-      document.getElementById("main-section").appendChild(detail);
-
-      let comment = document.createElement("div");
-      comment.id = "comment";
-      document.getElementById("main-section").appendChild(comment);
-
       // model-methods to render the content
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
-        replace("detail", element);
+        replace("upper-part", element);
       });
 
       model.getAllCommentsOfPost(bid, pid, (comments) => {
         let element = commentSection.render(comments);
-        replace("comment", element);
+        replace("lower-part", element);
       });
+
+      detail = true;
     }
   };
 })();
