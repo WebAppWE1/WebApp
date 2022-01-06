@@ -22,6 +22,11 @@ const presenter = (function () {
       console.log(`Presenter: Nutzer*in ${owner} hat sich angemeldet.`);
       let element = loggedIn.render(result);
       replace("user-info", element);
+      let main = document.getElementById('main-section');
+      main.addEventListener("click", handleClicks);
+            
+      let blogoverview = document.getElementById('blog-overview');
+      blogoverview.addEventListener("click", handleClicks);
     });
 
     model.getAllBlogs((blogs) => {
@@ -29,16 +34,19 @@ const presenter = (function () {
       let element = blogOverview.render(blogs);
       replace("blog-overview", element);
 
-      blogId = blogs[0].id;
+      /*blogId = blogs[0].id;
       model.getBlog(blogId, (blog) => {
         console.log("Blog-detail-info wird aufgerufen...");
         blog.setFormatDates(true);
         let element = blogInfo.render(blog);
         replace("blog-detail-info", element);
-      });
+      });*/
 
       //presenter.showPostOverview(blogId);
-      presenter.showPostDetail(blogId, "2673510346618126557");
+      //model.getAllPostsOfBlog(blogId, (posts) => {
+          //presenter.showPostDetail(blogId, posts[0].id);
+      //})
+      
 
       if (window.location.pathname === "/")
       router.navigateToPage("/blogOverview/" + blogId);
@@ -69,6 +77,37 @@ const presenter = (function () {
     if (oldContent) oldContent.remove();
     if (newContent) section.append(newContent);
   }
+  
+  function handleClicks(event){
+        let source = null;
+        
+        switch(event.target.tagName){
+            case "H2":
+                source = event.target;
+                console.log("SOURCE:" +source)
+                break;
+            case "A":
+                router.handleNavigationEvent(event);
+                source = event.target;
+                break;
+            case "BUTTON":
+                source = event.target;
+                break;
+            default:
+                source = event.target.closest("LI");
+                break;
+        }
+        
+        if(source){
+            let action = source.dataset.action;
+            let path = source.dataset.path;
+            console.log("PATH: "+path)
+            if(action && (action != "commentdelete") && (action != "postdelete"))
+                presenter[action](source.dataset.bid, source.dataset.id)
+            if(path)
+                router.navigateToPage(path)
+        }
+    }
 
   //Oeffentliche Methoden
   return {
@@ -101,7 +140,21 @@ const presenter = (function () {
       model.getAllPostsOfBlog(bid, (posts) => {
         let element = postOverview.render(posts);
         replace("upper-part", element);
+        replace("lower-part");
       });
+      
+      
+      model.getBlog(bid, (blog) => {
+        console.log("Blog-detail-info wird aufgerufen...");
+        blog.setFormatDates(true);
+        let element = blogInfo.render(blog);
+        replace("blog-detail-info", element);
+      });
+
+      //presenter.showPostOverview(blogId);
+      //model.getAllPostsOfBlog(blogId, (posts) => {
+          //presenter.showPostDetail(blogId, posts[0].id);
+      //})
 
       detail = false;
     },

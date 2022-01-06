@@ -42,7 +42,7 @@ and open the template in the editor.
             <nav id="blog-overview-scheme">
                 <ul>
                     <li>
-                        <a href=%path>%blogname (%postCount)</a>
+                        <a data-path = "/postoverview/%id" data-bid="%id" data-action = "showPostOverview">%blogname (%postCount)</a>
                     </li>
                 </ul>
             </nav>
@@ -61,7 +61,7 @@ and open the template in the editor.
     
                 <article id="post-info-scheme">
                     <header>
-                        <h2>%postname</h2>
+                        <h2><a data-path = "/postdetail/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action = "showPostDetail">%postname</a></h2>
                     </header>
                     <section>
                         <p>%formatedCreationDate</p>
@@ -86,14 +86,11 @@ and open the template in the editor.
                     </header>
                     <section>
                         <p>%postText</p>
-                        <figure>
-                            <figcaption>Bilder zum Post</figcaption>
-                            <img src="" height=""width="" alt="" />
-                        </figure>
+                        
                     </section>
                     <footer>
                         <nav id="post-detail-buttons">
-                            <button type="button">Zurück zur Übersicht</button>
+                            <button type="button" data-path = "/postoverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
                             <button type="button">Edit</button>
                             <button type="button">Delete</button>
                         </nav>

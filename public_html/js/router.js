@@ -54,6 +54,22 @@ const router = (function () {
         //viewModel.blogId = id;
         presenter.showBlogOverview(blogId);
     });
+    
+    router.addRoute('postOverview', function (url) {
+        // Get the index of which blog we want to show and call the appropriate function.
+        var blogId = url.split('postOverview/')[1].trim();
+        //viewModel.blogId = id;
+        presenter.showPostOverview(blogId);
+    });
+    
+    router.addRoute('postDetail', function (url) {
+        // Get the index of which blog we want to show and call the appropriate function.
+        var temp = url.split('postDetail/')[1].trim();
+        var postid = temp.split('/ofblog/')[0].trim();
+        var blogid = temp.split('/ofblog/')[1].trim();
+        //viewModel.blogId = id;
+        presenter.showPostDetail(blogid, postid);
+    });
 
 
     if (window) {
