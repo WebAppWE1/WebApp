@@ -70,6 +70,20 @@ const router = (function () {
         //viewModel.blogId = id;
         presenter.showPostDetail(blogid, postid);
     });
+    
+    router.addRoute('newPost', function (url) {
+        var blogId = url.split('newPost/')[1].trim();
+        
+        presenter.showNewPost(blogId);
+    });
+    
+    router.addRoute('postEdit', function (url) {
+        var temp = url.split('postDetail/')[1].trim();
+        var postid = temp.split('/ofblog/')[0].trim();
+        var blogid = temp.split('/ofblog/')[1].trim();
+        
+        presenter.showEditPost(blogid, postid);
+    })
 
 
     if (window) {

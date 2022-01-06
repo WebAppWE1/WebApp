@@ -56,7 +56,7 @@ and open the template in the editor.
     
             <div id="post-overview-scheme">
                 <div id="new-post-button">
-                    <button type="button">Neuer Post</button>
+                    <button type="button" data-path = "/newPost/%blogId" data-bid="%blogId" data-action = "showNewPost">Neuer Post</button>
                 </div>
     
                 <article id="post-info-scheme">
@@ -70,7 +70,7 @@ and open the template in the editor.
                     </section>
                     <footer>
                         <nav id="post-buttons">
-                            <button type="button">Edit</button>
+                            <button type="button" data-path="/postEdit/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action="showEditPost">Edit</button>
                             <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete">Delete</button>
                         </nav>
                     </footer>
@@ -91,7 +91,7 @@ and open the template in the editor.
                     <footer>
                         <nav id="post-detail-buttons">
                             <button type="button" data-path = "/postOverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
-                            <button type="button">Edit</button>
+                            <button type="button" data-path="/postEdit/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action="showEditPost">Edit</button>
                             <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete" >Delete</button>
                         </nav>
                     </footer>
@@ -113,6 +113,35 @@ and open the template in the editor.
                         <button data-cid="%id" data-id="%postId" data-bid="%blogId" type="button" data-action="commentdelete">Delete</button>
                     </footer>
                 </article>
+            </div>
+            
+            <div id="new-post-scheme">
+                <h2>Neuer Post</h2>
+                <form name="newpostform">
+                    <label for="titel">Titel</label>
+                    <input name="titel" type="text" required> <br>
+                    <label for="content">Inhalt</label>
+                    <textarea name="content" cols="30" rows="10"></textarea>
+                    
+                    <br><br>
+                    <button type = "button" data-path = "/postOverview/%id" data-bid="%id" data-action = "showPostOverview">Abbrechen</button>
+                    <button type="button">Post veröffentlichen</button>
+                </form>
+            </div>
+            
+            <div id="post-edit-scheme">
+                <h2>Post Bearbeiten</h2>
+                <form name="post-edit-form">
+                    <label for="titel">Titel</label>
+                    <input name="titel" type="text" required value="%postname">
+                    <label>Inhalt</label>
+                    <div contenteditable="true">
+                        %postText
+                    </div>
+                    
+                    <button type = "button" data-path = "/postDetail/%id/ofblog/%blogId" data-bid="%blogId" data-action = "showPostOverview">Abbrechen</button>
+                    <button type="button">Post aktualisieren</button>
+                </form>
             </div>
         </div>
     </body>

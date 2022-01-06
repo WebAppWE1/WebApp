@@ -101,11 +101,11 @@ const presenter = (function () {
         if(source){
             let action = source.dataset.action;
             let path = source.dataset.path;
-            console.log("PATH: "+path)
+            console.log("PATH: "+path);
             if(action && (action != "commentdelete") && (action != "postdelete"))
-                presenter[action](source.dataset.bid, source.dataset.id)
+                presenter[action](source.dataset.bid, source.dataset.id);
             if(path)
-                router.navigateToPage(path)
+                router.navigateToPage(path);
         }
     }
 
@@ -155,9 +155,6 @@ const presenter = (function () {
       detail = true;
       console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
 
-      // if (!init) initPage();
-
-      // model-methods to render the content
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
         replace("upper-part", element);
@@ -167,8 +164,27 @@ const presenter = (function () {
         let element = commentSection.render(comments);
         replace("lower-part", element);
       });
-
-      
+    },
+    
+    showNewPost(bid){
+        console.log(`Aufruf von presenter.showNewPost von Blog ${bid}`);
+        
+        model.getBlog(bid, (blog) => {
+            let element = newPost.render(blog);
+            replace("upper-part", element);
+            replace("lower-part");
+        });
+        
+    },
+    
+    showEditPost(bid,pid){
+        console.log(`Aufruf von presenter.showEditPost von Blog ${bid}, Post ${pid}`);
+        
+        model.getPost(bid, pid, (post) => {
+            let element = editPost.render(post);
+            replace("upper-part", element);
+            replace("lower-part");
+        })
     },
     
     commentdelete(blog_id, post_id, comment_id){

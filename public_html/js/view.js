@@ -119,6 +119,32 @@ const commentSection = {
   }
 };
 
+const newPost = {
+    render(data) {
+    
+        let page = document
+            .getElementById("new-post-scheme")
+            .cloneNode(true);
+        page.removeAttribute("id");
+        helper.setDataInfo(page, data);
+
+        return page;
+  }
+    
+};
+
+const editPost = {
+    render(data){
+        let page = document
+            .getElementById("post-edit-scheme")
+            .cloneNode(true);
+        page.removeAttribute("id");
+        helper.setDataInfo(page, data);
+
+        return page;
+    }
+};
+
 /**
  * helper-Funktion für das Einfügen von Values in die Seiten-Templates
  */
