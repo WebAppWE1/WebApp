@@ -42,7 +42,7 @@ and open the template in the editor.
             <nav id="blog-overview-scheme">
                 <ul>
                     <li>
-                        <a data-path = "/postoverview/%id" data-bid="%id" data-action = "showPostOverview">%blogname (%postCount)</a>
+                        <a data-path = "/postOverview/%id" data-bid="%id" data-action = "showPostOverview">%blogname (%postCount)</a>
                     </li>
                 </ul>
             </nav>
@@ -61,7 +61,7 @@ and open the template in the editor.
     
                 <article id="post-info-scheme">
                     <header>
-                        <h2><a data-path = "/postdetail/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action = "showPostDetail">%postname</a></h2>
+                        <h2><a data-path = "/postDetail/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action = "showPostDetail">%postname</a></h2>
                     </header>
                     <section>
                         <p>%formatedCreationDate</p>
@@ -71,7 +71,7 @@ and open the template in the editor.
                     <footer>
                         <nav id="post-buttons">
                             <button type="button">Edit</button>
-                            <button type="button">Delete</button>
+                            <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete">Delete</button>
                         </nav>
                     </footer>
                 </article>
@@ -90,9 +90,9 @@ and open the template in the editor.
                     </section>
                     <footer>
                         <nav id="post-detail-buttons">
-                            <button type="button" data-path = "/postoverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
+                            <button type="button" data-path = "/postOverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
                             <button type="button">Edit</button>
-                            <button type="button">Delete</button>
+                            <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete" >Delete</button>
                         </nav>
                     </footer>
                 </article>
@@ -110,7 +110,7 @@ and open the template in the editor.
                         <p>%commentText</p>
                     </section>
                     <footer>
-                        <button type="button">Delete</button>
+                        <button data-cid="%id" data-id="%postId" data-bid="%blogId" type="button" data-action="commentdelete">Delete</button>
                     </footer>
                 </article>
             </div>

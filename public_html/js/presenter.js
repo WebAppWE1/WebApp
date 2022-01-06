@@ -124,8 +124,6 @@ const presenter = (function () {
         //Hier wird die Seite ohne Inhalt angezeigt
         loginPage();
       }
-
-      detail = false;
     },
 
     // Wird vom Router aufgerufen, wenn eine Blog-Übersicht angezeigt werden soll
@@ -134,6 +132,7 @@ const presenter = (function () {
     },
 
     showPostOverview(bid) {
+      detail = false;
       console.log(`Aufruf von presenter.showPostOverview von Blog ${bid}`);
 
       // if (!init) initPage();
@@ -149,17 +148,11 @@ const presenter = (function () {
         blog.setFormatDates(true);
         let element = blogInfo.render(blog);
         replace("blog-detail-info", element);
-      });
-
-      //presenter.showPostOverview(blogId);
-      //model.getAllPostsOfBlog(blogId, (posts) => {
-          //presenter.showPostDetail(blogId, posts[0].id);
-      //})
-
-      detail = false;
+      });      
     },
 
     showPostDetail(bid, pid) {
+      detail = true;
       console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
 
       // if (!init) initPage();
@@ -175,7 +168,29 @@ const presenter = (function () {
         replace("lower-part", element);
       });
 
-      detail = true;
+      
+    },
+    
+    commentdelete(blog_id, post_id, comment_id){
+            model.deleteComment(blog_id, post_id, comment_id), (removed)=>{
+            }
+            console.log("Kommentar gelöscht");
+                alert("Kommentar gelöscht");
+        },
+        
+    postdelete(blog_id,post_id){
+        model.deletePost(blog_id, post_id, (removed)=>{
+            
+            if(detail){
+                init=false;
+                router.navigateToPage("/postOverview/"+blog_id);
+                //alert("ZURÜCK ZU OVERVIEW");
+            }
+            
+            alert("Post gelöscht ");
+                
+        });
+            
     }
   };
 })();

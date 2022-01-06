@@ -59,7 +59,9 @@ const postOverview = {
     let page = document
       .getElementById("post-overview-scheme")
       .cloneNode(true);
+    page.addEventListener("click", handleDelete);
     page.removeAttribute("id");
+    
     let article = page.querySelector("article");
     article.remove();
     for (let value of data) {
@@ -81,6 +83,8 @@ const postDetail = {
       .getElementById("post-detail-scheme")
       .cloneNode(true);
     page.removeAttribute("id");
+    page.addEventListener("click", handleDelete);
+    
     let article = page.querySelector("article");
     article.remove();
     let content = article.cloneNode(true);
@@ -100,6 +104,8 @@ const commentSection = {
       .getElementById("comment-section-scheme")
       .cloneNode(true);
     page.removeAttribute("id");
+    page.addEventListener("click", handleDelete);
+    
     let article = page.querySelector("article");
     article.remove();
     for (let value of data) {
@@ -126,3 +132,37 @@ const helper = {
     element.innerHTML = content;
   },
 };
+
+function handleDelete(event){
+    let source = null;
+    switch(event.target.tagName){
+        
+            case "BUTTON":
+                source = event.target;
+                console.log("SOURCE: "+source);
+                if(source){
+                    let action = source.dataset.action;
+                    console.log("ACTION: "+action);
+                    if(action == "commentdelete" && confirm("Wirklich löschen?")){
+                        let obj = source.parentElement.closest("ARTICLE");
+                        obj.remove();
+                        let cid = source.dataset.cid;
+                        let bid = source.dataset.bid;
+                        let id = source.dataset.id;
+                        console.log("CID: "+cid);
+                        presenter[action](bid,id,cid);
+                    }
+                    if(action == "postdelete" && confirm("Wirklich löschen?")){
+                        let obj = source.parentElement.closest("ARTICLE");
+                        obj.remove();
+                        let pid = source.dataset.id;
+                        let bid = source.dataset.bid;
+                        
+                        presenter[action](bid,pid);
+                        
+                        //presenter.showPostsOverview(bid);
+                    }
+                }
+                break;
+        }
+}
