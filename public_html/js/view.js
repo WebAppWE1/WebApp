@@ -132,12 +132,11 @@ const newPost = {
             event.preventDefault();
             let form = page.querySelector("form");
             console.log("BID: "+data.blogId);
-            
             console.log("TITLE: "+form.titel.value);
-            console.log("CONTENT: "+data.postText);
-            model.addNewPost(data.blogId, form.titel.value, data.postText, (update) => {
+            console.log("CONTENT: "+form.content.value);
+            model.addNewPost(data.id, form.titel.value, form.content.value, (update) => {
                 // data-path = "/postDetail/%id/ofblog/%blogId"
-                router.navigateToPage("/postDetail/"+data.id+"/ofblog/"+data.blogId);
+                router.navigateToPage("/postOverview/"+data.id);
             });
         }); 
 
