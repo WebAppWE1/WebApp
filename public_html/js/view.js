@@ -139,6 +139,19 @@ const editPost = {
             .getElementById("post-edit-scheme")
             .cloneNode(true);
         page.removeAttribute("id");
+        page.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let form = page.querySelector("form");
+            console.log("BID: "+data.blogId);
+            console.log("PID: "+data.id);
+            console.log("TITLE: "+form.titel.value);
+            console.log("CONTENT: "+data.postText);
+            model.updatePost(data.blogId, data.id, form.titel.value, data.postText, (update) => {
+                // data-path = "/postDetail/%id/ofblog/%blogId"
+                router.navigateToPage("/postDetail/"+data.id+"/ofblog/"+data.blogId);
+            });
+        }); 
+        
         helper.setDataInfo(page, data);
 
         return page;

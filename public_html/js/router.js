@@ -78,7 +78,7 @@ const router = (function () {
     });
     
     router.addRoute('postEdit', function (url) {
-        var temp = url.split('postDetail/')[1].trim();
+        var temp = url.split('postEdit/')[1].trim();
         var postid = temp.split('/ofblog/')[0].trim();
         var blogid = temp.split('/ofblog/')[1].trim();
         

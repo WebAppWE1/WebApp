@@ -133,14 +133,14 @@ and open the template in the editor.
                 <h2>Post Bearbeiten</h2>
                 <form name="post-edit-form">
                     <label for="titel">Titel</label>
-                    <input name="titel" type="text" required value="%postname">
+                    <input id="titel" name="titel" type="text" required value="%postname">
                     <label>Inhalt</label>
                     <div contenteditable="true">
                         %postText
                     </div>
                     
                     <button type = "button" data-path = "/postDetail/%id/ofblog/%blogId" data-bid="%blogId" data-action = "showPostOverview">Abbrechen</button>
-                    <button type="button">Post aktualisieren</button>
+                    <button type="submit">Post aktualisieren</button>
                 </form>
             </div>
         </div>

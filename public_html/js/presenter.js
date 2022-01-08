@@ -33,21 +33,7 @@ const presenter = (function () {
       console.log("Blog-Overview wird geladen...");
       let element = blogOverview.render(blogs);
       replace("blog-overview", element);
-
-      /*blogId = blogs[0].id;
-      model.getBlog(blogId, (blog) => {
-        console.log("Blog-detail-info wird aufgerufen...");
-        blog.setFormatDates(true);
-        let element = blogInfo.render(blog);
-        replace("blog-detail-info", element);
-      });*/
-
-      //presenter.showPostOverview(blogId);
-      //model.getAllPostsOfBlog(blogId, (posts) => {
-          //presenter.showPostDetail(blogId, posts[0].id);
-      //})
       
-
       if (window.location.pathname === "/")
       router.navigateToPage("/blogOverview/" + blogId);
     });
@@ -129,6 +115,26 @@ const presenter = (function () {
     // Wird vom Router aufgerufen, wenn eine Blog-Übersicht angezeigt werden soll
     showBlogOverview(bid) {
       console.log(`Aufruf von presenter.showBlogOverview(${blogId})`);
+      model.getSelf((result) => {
+      owner = result.displayName;
+      console.log(`Presenter: Nutzer*in ${owner} hat sich angemeldet.`);
+      let element = loggedIn.render(result);
+      replace("user-info", element);
+      let main = document.getElementById('main-section');
+      main.addEventListener("click", handleClicks);
+            
+      let blogoverview = document.getElementById('blog-overview');
+      blogoverview.addEventListener("click", handleClicks);
+    });
+
+    model.getAllBlogs((blogs) => {
+      console.log("Blog-Overview wird geladen...");
+      let element = blogOverview.render(blogs);
+      replace("blog-overview", element);
+      
+      if (window.location.pathname === "/")
+      router.navigateToPage("/blogOverview/" + blogId);
+    });
     },
 
     showPostOverview(bid) {
@@ -205,8 +211,9 @@ const presenter = (function () {
             
             alert("Post gelöscht ");
                 
-        });
-            
+        });       
     }
+    
+    
   };
 })();
