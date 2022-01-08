@@ -126,7 +126,20 @@ const newPost = {
             .getElementById("new-post-scheme")
             .cloneNode(true);
         page.removeAttribute("id");
-        helper.setDataInfo(page, data);
+        helper.setDataInfo(page, data);    //addNewPost(bid, title, content, callback)
+        
+        page.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let form = page.querySelector("form");
+            console.log("BID: "+data.blogId);
+            
+            console.log("TITLE: "+form.titel.value);
+            console.log("CONTENT: "+data.postText);
+            model.addNewPost(data.blogId, form.titel.value, data.postText, (update) => {
+                // data-path = "/postDetail/%id/ofblog/%blogId"
+                router.navigateToPage("/postDetail/"+data.id+"/ofblog/"+data.blogId);
+            });
+        }); 
 
         return page;
   }
@@ -146,7 +159,7 @@ const editPost = {
             console.log("PID: "+data.id);
             console.log("TITLE: "+form.titel.value);
             console.log("CONTENT: "+data.postText);
-            model.updatePost(data.blogId, data.id, form.titel.value, data.postText, (update) => {
+            model.updatePost(data.blogId, data.id, form.titel.value, page.querySelector("div").innerHTML, (update) => {
                 // data-path = "/postDetail/%id/ofblog/%blogId"
                 router.navigateToPage("/postDetail/"+data.id+"/ofblog/"+data.blogId);
             });
