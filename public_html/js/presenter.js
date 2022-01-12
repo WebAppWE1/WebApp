@@ -73,8 +73,13 @@ const presenter = (function () {
                 console.log("SOURCE:" +source)
                 break;
             case "A":
-                router.handleNavigationEvent(event);
                 source = event.target;
+                let url = source.dataset.action;
+                if(url != "url"){
+                    router.handleNavigationEvent(event);
+                }
+                
+                
                 break;
             case "BUTTON":
                 source = event.target;
@@ -88,7 +93,7 @@ const presenter = (function () {
             let action = source.dataset.action;
             let path = source.dataset.path;
             console.log("PATH: "+path);
-            if(action && (action != "commentdelete") && (action != "postdelete"))
+            if(action && (action != "commentdelete") && (action != "postdelete") && (action != "url"))
                 presenter[action](source.dataset.bid, source.dataset.id);
             if(path)
                 router.navigateToPage(path);
