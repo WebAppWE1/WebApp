@@ -46,6 +46,7 @@ const blogInfo = {
       .getElementById("blog-info-scheme")
       .cloneNode(true);
     page.removeAttribute("id");
+    data.setFormatDates(false);
     helper.setDataInfo(page, data);
 
     return page;
@@ -61,6 +62,7 @@ const postOverview = {
       .cloneNode(true);
     page.removeAttribute("id");
     let article = page.querySelector("article");
+    article.removeAttribute("id");
     article.remove();
     for (let value of data) {
       let content = article.cloneNode(true);
@@ -74,40 +76,33 @@ const postOverview = {
 };
 
 const postDetail = {
-  render(data) {
+  render(dataPost, dataComment) {
     console.log("View: render() von postDetail");
     
     let page = document
       .getElementById("post-detail-scheme")
       .cloneNode(true);
     page.removeAttribute("id");
-    let article = page.querySelector("article");
-    article.remove();
-    let content = article.cloneNode(true);
-    page.append(content);
-    data.setFormatDates(false);
-    helper.setDataInfo(page, data);
+    let articlePost = page.querySelector("article");
+    articlePost.remove();
+    let contentPost = articlePost.cloneNode(true);
+    page.append(contentPost);
+    dataPost.setFormatDates(true);
+    helper.setDataInfo(page, dataPost);
 
-    return page;
-  }
-};
-
-const commentSection = {
-  render(data) {
-    console.log("View: render() von commentSection");
-
-    let page = document
+    let comments = document
       .getElementById("comment-section-scheme")
       .cloneNode(true);
-    page.removeAttribute("id");
-    let article = page.querySelector("article");
-    article.remove();
-    for (let value of data) {
-      let content = article.cloneNode(true);
-      page.append(content);
+    comments.removeAttribute("id");
+    let articleComment = comments.querySelector("article");
+    articleComment.remove();
+    for (let value of dataComment) {
+      let contentComment = articleComment.cloneNode(true);
+      comments.append(contentComment);
       value.setFormatDates(true);
-      helper.setDataInfo(page, value);
+      helper.setDataInfo(comments, value);
     }
+    page.append(comments);
 
     return page;
   }

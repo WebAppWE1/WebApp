@@ -56,16 +56,11 @@ const model = (function () {
 
   Blog.prototype = {
     constructor: Blog,
-    setFormatDates: function (long) {
-      if (!long) {
-        this.formatedCreationDate = formatDate(this.creationDate, false);
-        this.formatedAlterationDate = formatDate(this.alterationDate, false);
-      } else {
-        this.formatedCreationDate = formatDate(this.creationDate, true);
-        this.formatedAlterationDate = formatDate(this.alterationDate, true);
-      } 
+    setFormatDates: function(long) {
+      this.formatedCreationDate = formatDate(this.creationDate, long);
+      this.formatedAlterationDate = formatDate(this.alterationDate, long);
     }
-  };
+  }
 
   function Post(id, blogId, postname, creationDate, alterationDate, postText, commentCount) {
     this.id = id;
@@ -81,14 +76,9 @@ const model = (function () {
 
   Post.prototype = {
     constructor: Post,
-    setFormatDates: function (long) {
-      if (!long) {
-        this.formatedCreationDate = formatDate(this.creationDate, false);
-        this.formatedAlterationDate = formatDate(this.alterationDate, false);
-      } else { 
-        this.formatedCreationDate = formatDate(this.creationDate, true);
-        this.formatedAlterationDate = formatDate(this.alterationDate, true);  
-      }
+    setFormatDates: function(long) {
+      this.formatedCreationDate = formatDate(this.creationDate, long);
+      this.formatedAlterationDate = formatDate(this.alterationDate, long);
     }
   };
 
@@ -106,14 +96,9 @@ const model = (function () {
 
   Comment.prototype = {
     constructor: Comment,
-    setFormatDates: function (long) {
-      if (!long) {
-        this.formatedCreationDate = formatDate(this.creationDate, false);
-        this.formatedAlterationDate = formatDate(this.alterationDate, false);
-      } else {
-        this.formatedCreationDate = formatDate(this.creationDate, true);
-        this.formatedAlterationDate = formatDate(this.alterationDate, true);
-      }
+    setFormatDates: function(long) {
+      this.formatedCreationDate = formatDate(this.creationDate, long);
+      this.formatedAlterationDate = formatDate(this.alterationDate, long);
     }
   };
 

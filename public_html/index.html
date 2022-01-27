@@ -25,52 +25,50 @@ and open the template in the editor.
             <button id="sign-in-or-out-button">Anmelden</button>
             <div id="user-info"></div>
             <div id="auth-status"></div><hr>
-            <div id="blog-overview"></div>
-            <div id="blog-detail-info"></div><hr>
+            <div id="header-part">
+                <div id="blog-overview"></div>
+                <div id="blog-detail-info"></div>
+            </div><hr>
         </header>
-        <main id="main-section">
-            <div id="upper-part"></div>
-            <div id="lower-part"></div>
-        </main>
+        <main id="main-section"></main>
 
         <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
         <div id="templates" hidden>
             <div id="user-info-loggedIn-scheme">
-                <p><strong>User: </strong>%displayName</p>
+                <p><span class="user">User:</span> %displayName</p>
             </div>
     
             <nav id="blog-overview-scheme">
                 <ul>
-                    <li>
-                        <a href=%path>%blogname (%postCount)</a>
+                    <li data-path="/info/%id">
+                        %blogname (%postCount)
                     </li>
                 </ul>
             </nav>
     
-            <div id="blog-info-scheme">
-                <h2>%blogname</h2>
+            <div id="blog-info-scheme" >
+                <h2><a href="/overview/%id">%blogname</a></h2>
                 <p>Anzahl Posts: %postCount</p>
                 <p>%formatedCreationDate</p>
                 <p>%formatedAlterationDate</p>
+                <a href="%url">Zum Google-Blog</a>    
             </div>
     
             <div id="post-overview-scheme">
-                <div id="new-post-button">
-                    <button type="button">Neuer Post</button>
-                </div>
+                <nav id="new-post-button">
+                    <button type="button" data-path="/new/%id">Neuer Post</button>
+                </nav>
     
                 <article id="post-info-scheme">
                     <header>
-                        <h2>%postname</h2>
-                    </header>
-                    <section>
+                        <h2><a href="/detail/%id/ofBlog/%blogId">%postname</a></h2>
                         <p>%formatedCreationDate</p>
                         <p>%formatedAlterationDate</p>
                         <p>Kommentare: %commentCount</p>
-                    </section>
+                    </header>
                     <footer>
-                        <nav id="post-buttons">
-                            <button type="button">Edit</button>
+                        <nav>
+                            <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
                             <button type="button">Delete</button>
                         </nav>
                     </footer>
@@ -78,6 +76,9 @@ and open the template in the editor.
             </div>
     
             <div id="post-detail-scheme">
+                <nav>
+                    <button type="button" data-path="/overview/%blogId">Zurück zur Übersicht</button>
+                </nav>
                 <article>
                     <header>
                         <h2>%postname</h2>
@@ -85,16 +86,11 @@ and open the template in the editor.
                         <p>%formatedAlterationDate</p>
                     </header>
                     <section>
-                        <p>%postText</p>
-                        <figure>
-                            <figcaption>Bilder zum Post</figcaption>
-                            <img src="" height=""width="" alt="" />
-                        </figure>
+                        %postText
                     </section>
                     <footer>
-                        <nav id="post-detail-buttons">
-                            <button type="button">Zurück zur Übersicht</button>
-                            <button type="button">Edit</button>
+                        <nav>
+                            <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
                             <button type="button">Delete</button>
                         </nav>
                     </footer>
@@ -110,7 +106,7 @@ and open the template in the editor.
                         <p>%creationDate</p>
                     </header>
                     <section>
-                        <p>%commentText</p>
+                        %commentText
                     </section>
                     <footer>
                         <button type="button">Delete</button>

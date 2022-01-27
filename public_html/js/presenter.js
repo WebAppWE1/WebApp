@@ -9,7 +9,7 @@ const presenter = (function () {
   // Private Variablen und Funktionen
   let init = false;
   let owner = null;
-  let blogId = 0;
+  let overview = false;
   let detail = false;
   
   // Initialisiert die allgemeinen Teile der Seite
@@ -24,29 +24,40 @@ const presenter = (function () {
       replace("user-info", element);
     });
 
-    model.getAllBlogs((blogs) => {
-      console.log("Blog-Overview wird geladen...");
-      let element = blogOverview.render(blogs);
-      replace("blog-overview", element);
+    presenter.showBlogOverview();
 
-      blogId = blogs[0].id;
-      model.getBlog(blogId, (blog) => {
-        console.log("Blog-detail-info wird aufgerufen...");
-        blog.setFormatDates(true);
-        let element = blogInfo.render(blog);
-        replace("blog-detail-info", element);
-      });
+    let blogoverviewpart = document.getElementById("blog-overview");
+    blogoverviewpart.addEventListener("click", handleClicks);
+    let blogOverview = document.getElementById("blog-detail-info");
+    blogOverview.addEventListener("click", handleClicks);
+    let main = document.getElementById("main-section");
+    main.addEventListener("click", handleClicks);
 
-      //presenter.showPostOverview(blogId);
-      presenter.showPostDetail(blogId, "2673510346618126557");
-
-      if (window.location.pathname === "/")
-      router.navigateToPage("/blogOverview/" + blogId);
-    });
-    
-    // Das muss später an geeigneter Stelle in Ihren Code hinein.
     init = true;
   }
+
+  // Event Handler für alle Navigations-Events auf der Seite
+  function handleClicks(event) {
+    let source = null;
+    // Behandelt werden clicks auf a-Tags, Buttons und Elemente,  
+    // die in ein Li-Tag eingebunden sind.
+    switch (event.target.tagName) {
+        case "A":
+            router.handleNavigationEvent(event);
+            break;
+        case "BUTTON":
+            source = event.target;
+            break;
+        default:
+            source = event.target.closest("LI");
+            break;
+    }
+    if (source) {
+        let path = source.dataset.path;
+        if (path)
+            router.navigateToPage(path);
+    }
+}
   
   // Sorgt dafür, dass bei einem nicht-angemeldeten Nutzer nur noch der Name der Anwendung
   // und der Login-Button angezeigt wird.
@@ -57,11 +68,11 @@ const presenter = (function () {
     replace("user-info")
     replace("blog-overview");
     replace("blog-detail-info");
-    replace("upper-part");
-    if (detail) replace("lower-part");
+    replace("main-section");
     
     init = false;
   }
+
   // Tauscht Templates in Bereichen aus, die durch die id-Wert bestimmt werden
   function replace(id, newContent) {
     let section = document.getElementById(id);
@@ -90,39 +101,61 @@ const presenter = (function () {
     },
 
     // Wird vom Router aufgerufen, wenn eine Blog-Übersicht angezeigt werden soll
-    showBlogOverview(bid) {
-      console.log(`Aufruf von presenter.showBlogOverview(${blogId})`);
+    showBlogOverview() {
+      console.log(`Aufruf von presenter.showBlogOverview()`);
+      // if (!init) initPage();
+      
+      model.getAllBlogs(blogs => {
+        console.log("Blog-Overview wird aufgerufen...");
+        let element = blogOverview.render(blogs);
+        replace("blog-overview", element);
+      });
+      detail = false;
+      overview = false;
     },
 
-    showPostOverview(bid) {
-      console.log(`Aufruf von presenter.showPostOverview von Blog ${bid}`);
+    showBlogInfo(blogId) {
+      console.log(`Aufruf von presenter.showBlogInfo von Blog ${blogId}`);
 
-      // if (!init) initPage();
-      model.getAllPostsOfBlog(bid, (posts) => {
+      model.getBlog(blogId, blog => {
+        console.log("BlogInfo wird aufgerufen...");
+        let element = blogInfo.render(blog);
+        replace("blog-detail-info", element);
+      });
+
+      if(overview) {replace("main-section");}
+      detail = false;
+
+    },
+
+    showPostOverview(blogId) {
+      console.log(`Aufruf von presenter.showPostOverview von Blog ${blogId}`);
+      if (!init) initPage();
+
+      model.getAllPostsOfBlog(blogId, (posts) => {
         let element = postOverview.render(posts);
-        replace("upper-part", element);
+        replace("main-section", element);
       });
 
       detail = false;
+      overview = true;
     },
 
     showPostDetail(bid, pid) {
       console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
 
-      // if (!init) initPage();
+      if (!init) initPage();
 
       // model-methods to render the content
       model.getPost(bid, pid, (post) => {
-        let element = postDetail.render(post);
-        replace("upper-part", element);
-      });
-
-      model.getAllCommentsOfPost(bid, pid, (comments) => {
-        let element = commentSection.render(comments);
-        replace("lower-part", element);
+        model.getAllCommentsOfPost(bid, pid, (comments) => {
+          let element = postDetail.render(post, comments);
+          replace("main-section", element);
+        });
       });
 
       detail = true;
+      overview = true;
     }
   };
 })();
