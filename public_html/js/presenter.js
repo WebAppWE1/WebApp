@@ -38,6 +38,7 @@ const presenter = (function () {
       router.navigateToPage("/blogOverview/" + blogId);
     });
     
+    
     // Das muss später an geeigneter Stelle in Ihren Code hinein.
     init = true;
   }
@@ -48,11 +49,13 @@ const presenter = (function () {
     console.log("Presenter: Aufruf von loginPage()");
     if (owner !== undefined)
       console.log(`Presenter: Nutzer*in ${owner} hat sich abgemeldet.`);
+    let element;
     replace("user-info")
     replace("blog-overview");
     replace("blog-detail-info");
-    replace("upper-part");
-    if (detail) replace("lower-part");
+    replace("blog-info-scheme");
+    replace("main-section", element);
+    
     
     init = false;
   }
@@ -119,6 +122,7 @@ const presenter = (function () {
 
     // Wird vom Router aufgerufen, wenn eine Blog-Übersicht angezeigt werden soll
     showBlogOverview(bid) {
+        if (!init) initPage();
       console.log(`Aufruf von presenter.showBlogOverview(${blogId})`);
       model.getSelf((result) => {
       owner = result.displayName;
@@ -146,11 +150,11 @@ const presenter = (function () {
       detail = false;
       console.log(`Aufruf von presenter.showPostOverview von Blog ${bid}`);
 
-      // if (!init) initPage();
+      if (!init) initPage();
       model.getAllPostsOfBlog(bid, (posts) => {
         let element = postOverview.render(posts);
-        replace("upper-part", element);
-        replace("lower-part");
+        replace("main-section", element);
+        
       });
       
       
@@ -164,17 +168,21 @@ const presenter = (function () {
 
     showPostDetail(bid, pid) {
       detail = true;
+      if (!init) initPage();
       console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
 
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
-        replace("upper-part", element);
+        model.getAllCommentsOfPost(bid, pid, (comments) => {
+        let element2 = commentSection.render(comments);
+        element.append(element2)
+        replace("main-section", element);
+      });
+       
       });
 
-      model.getAllCommentsOfPost(bid, pid, (comments) => {
-        let element = commentSection.render(comments);
-        replace("lower-part", element);
-      });
+      
+      
     },
     
     showNewPost(bid){
@@ -182,8 +190,8 @@ const presenter = (function () {
         
         model.getBlog(bid, (blog) => {
             let element = newPost.render(blog);
-            replace("upper-part", element);
-            replace("lower-part");
+            replace("main-section", element);
+            
         });
         
     },
@@ -193,8 +201,8 @@ const presenter = (function () {
         
         model.getPost(bid, pid, (post) => {
             let element = editPost.render(post);
-            replace("upper-part", element);
-            replace("lower-part");
+            replace("main-section", element);
+            
         })
     },
     

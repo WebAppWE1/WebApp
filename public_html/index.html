@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" />
         <script async defer src="https://apis.google.com/js/api.js"></script>
 
         <script defer src="js/login.js"></script>
@@ -29,14 +30,13 @@ and open the template in the editor.
             <div id="blog-detail-info"></div><hr>
         </header>
         <main id="main-section">
-            <div id="upper-part"></div>
-            <div id="lower-part"></div>
+            
         </main>
 
         <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
         <div id="templates" hidden>
             <div id="user-info-loggedIn-scheme">
-                <p><strong>User: </strong>%displayName</p>
+                <p>User: %displayName</p>
             </div>
     
             <nav id="blog-overview-scheme">
@@ -63,14 +63,15 @@ and open the template in the editor.
                 <article id="post-info-scheme">
                     <header>
                         <h2><a data-path = "/postDetail/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action = "showPostDetail">%postname</a></h2>
-                    </header>
-                    <section>
                         <p>%formatedCreationDate</p>
                         <p>%formatedAlterationDate</p>
                         <p>Kommentare: %commentCount</p>
+                    </header>
+                    <section>
+                        
                     </section>
                     <footer>
-                        <nav id="post-buttons">
+                        <nav>
                             <button type="button" data-path="/postEdit/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action="showEditPost">Edit</button>
                             <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete">Delete</button>
                         </nav>
@@ -79,19 +80,21 @@ and open the template in the editor.
             </div>
     
             <div id="post-detail-scheme">
+                
                 <article>
+                    <button type="button" data-path = "/postOverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
                     <header>
                         <h2>%postname</h2>
                         <p>%formatedCreationDate</p>
                         <p>%formatedAlterationDate</p>
                     </header>
                     <section>
-                        <p>%postText</p>
+                        %postText
                         
                     </section>
                     <footer>
                         <nav id="post-detail-buttons">
-                            <button type="button" data-path = "/postOverview/%blogId" data-bid="%blogId" data-action = "showPostOverview">Zurück zur Übersicht</button>
+                            
                             <button type="button" data-path="/postEdit/%id/ofblog/%blogId" data-id="%id" data-bid="%blogId" data-action="showEditPost">Edit</button>
                             <button data-id="%id" data-bid="%blogId" type="button" data-action="postdelete" >Delete</button>
                         </nav>
