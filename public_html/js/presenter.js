@@ -157,13 +157,15 @@ const presenter = (function () {
         
       });
       
-      
-      model.getBlog(bid, (blog) => {
+      if(bid != blogId){
+          model.getBlog(bid, (blog) => {
         console.log("Blog-detail-info wird aufgerufen...");
         blog.setFormatDates(true);
         let element = blogInfo.render(blog);
         replace("blog-detail-info", element);
-      });      
+      }); 
+      }
+           
     },
 
     showPostDetail(bid, pid) {
@@ -173,14 +175,19 @@ const presenter = (function () {
 
       model.getPost(bid, pid, (post) => {
         let element = postDetail.render(post);
-        model.getAllCommentsOfPost(bid, pid, (comments) => {
-        let element2 = commentSection.render(comments);
-        element.append(element2)
+        
         replace("main-section", element);
-      });
+        
        
       });
-
+      if(bid != blogId){
+          model.getBlog(bid, (blog) => {
+        console.log("Blog-detail-info wird aufgerufen...");
+        blog.setFormatDates(true);
+        let element = blogInfo.render(blog);
+        replace("blog-detail-info", element);
+      }); 
+      }
       
       
     },

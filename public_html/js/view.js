@@ -91,33 +91,38 @@ const postDetail = {
     page.append(content);
     data.setFormatDates(false);
     helper.setDataInfo(page, data);
-
-    return page;
-  }
-};
-
-const commentSection = {
-  render(data) {
-    console.log("View: render() von commentSection");
-
-    let page = document
-      .getElementById("comment-section-scheme")
-      .cloneNode(true);
-    page.removeAttribute("id");
-    page.addEventListener("click", handleDelete);
     
-    let article = page.querySelector("article");
-    article.remove();
-    for (let value of data) {
-      let content = article.cloneNode(true);
-      page.append(content);
-      value.setFormatDates(true);
-      helper.setDataInfo(page, value);
-    }
+    model.getAllCommentsOfPost(data.blogId, data.id, (comments) =>{
+        let commpage = rendercomments(comments);
+        page.append(commpage);
+    });
+    
+    function rendercomments(data) {
+        console.log("View: render() von commentSection");
+
+        let page = document
+        .getElementById("comment-section-scheme")
+        .cloneNode(true);
+        page.removeAttribute("id");
+        //page.addEventListener("click", handleDelete);
+    
+        let article = page.querySelector("article");
+        article.remove();
+        for (let value of data) {
+        let content = article.cloneNode(true);
+        page.append(content);
+        value.setFormatDates(true);
+        helper.setDataInfo(page, value);
+        }
+
+        return page;
+  }
 
     return page;
   }
 };
+
+
 
 const newPost = {
     render(data) {
