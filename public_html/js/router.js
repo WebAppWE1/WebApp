@@ -85,8 +85,9 @@ const router = (function () {
 
     if (window) {
         window.addEventListener('popstate', (event) => {
-            router.handleRouting();
+            router.handleRouting(window.location.pathname);
         });
+        router.handleRouting(window.location.pathname);
     }
 })();
 
