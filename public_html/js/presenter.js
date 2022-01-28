@@ -141,14 +141,14 @@ const presenter = (function () {
       overview = true;
     },
 
-    showPostDetail(bid, pid) {
-      console.log(`Aufruf von presenter.showPostDetail von Post ${pid}`);
+    showPostDetail(blogId, postId) {
+      console.log(`Aufruf von presenter.showPostDetail von Post ${postId}`);
 
       if (!init) initPage();
 
       // model-methods to render the content
-      model.getPost(bid, pid, (post) => {
-        model.getAllCommentsOfPost(bid, pid, (comments) => {
+      model.getPost(blogId, postId, (post) => {
+        model.getAllCommentsOfPost(blogId, postId, (comments) => {
           let element = postDetail.render(post, comments);
           replace("main-section", element);
         });
@@ -156,6 +156,71 @@ const presenter = (function () {
 
       detail = true;
       overview = true;
+    },
+
+    showEdit(blogId, postId) {
+      console.log(`Aufruf von presenter.showEdit von Post ${postId} von Blog ${blogId}`)
+
+      if(!init) initPage();
+
+      model.getPost(blogId, postId, (post) => {
+        let element = postEdit.render(post);
+        replace("main-section", element);
+      });
+    },
+
+    showNewPost(blogId) {
+      console.log(`Aufruf von presenter.showNewPost von Blog ${blogId}`);
+
+      if(!init) initPage();
+
+      model.getBlog(blogId, (blog) => {
+        let element = newPost.render(blog);
+        replace("main-section", element);
+      });
+    },
+
+    save(blogId, postId) {
+      console.log(`Aufruf von presenter.save`);
+
+      if (postId === undefined) {
+        router.navigateToPage(`/overview/${blogId}`);
+      } else {
+        model.getPost(blogId, postId, (post) => {
+          console.log(`Post ${post.id} wurde erfolgreich hinzugefügt`);
+          router.navigateToPage(`/detail/${post.id}/ofBlog/${post.blogId}`);
+        });
+      }
+    },
+
+    cancle(blogId, postId) {
+      console.log("Aufruf von presenter.cancle");
+
+      if(detail) {
+        router.navigateToPage(`/detail/${postId}/ofBlog/${blogId}`);
+      } else {
+        router.navigateToPage(`/overview/${blogId}`);
+      }
+    },
+
+    deleteComment(blogId, postId, commentId) {
+      console.log("Aufruf von presenter.deleteComment");
+
+      model.deleteComment(blogId, postId, commentId, (result) => {
+        console.log(`Comment ${commentId} wurde gelöscht`);
+        alert("Kommentar wurde gelöscht");
+      });
+    },
+
+    deletePost(blogId, postId) {
+      console.log("Aufruf von presenter.deletePost");
+
+      model.deletePost(blogId, postId, (result) => {
+        alert("Post wurde gelöscht");
+        if(detail) {
+          router.navigateToPage(`/overview/${blogId}`);
+        }
+      });
     }
   };
 })();

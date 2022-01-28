@@ -55,6 +55,17 @@ const blogInfo = {
 
 const postOverview = {
   render(data) {
+    let handleDelete = (event) => {
+      let action = event.target.dataset.action;
+      if(action === "delete" && confirm("Wollen Sie den Post wirklich löschen?")) {
+        let source = event.target.closest("ARTICLE");
+        console.log(source);
+        if(source) {
+          presenter.deletePost(source.dataset.blogid, source.dataset.postid);
+        }
+      }
+    };
+
     console.log("View: render() von postOverview");
 
     let page = document
@@ -70,6 +81,7 @@ const postOverview = {
       value.setFormatDates(false);
       helper.setDataInfo(page, value);
     }
+    page.addEventListener("click", handleDelete);
 
     return page;
   },
@@ -103,6 +115,64 @@ const postDetail = {
       helper.setDataInfo(comments, value);
     }
     page.append(comments);
+
+    return page;
+  }
+};
+
+const postEdit = {
+    render(data) {
+      let handleOption = (event) => {
+        event.preventDefault();
+        let action = event.target.dataset.action;
+        if(action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
+          let form = page.querySelector("form");
+          model.updatePost(data.blogId, data.id, form.title.value, page.querySelector("div").innerHTML, (result) => {
+            presenter[action](data.blogId, data.id);
+          });
+        }
+        else if(action === "cancle") {
+          presenter[action](data.blogId, data.id);
+        }
+      };
+      
+      console.log("View: render() von postEdit");
+
+      let page = document
+        .getElementById("edit-scheme")
+        .cloneNode(true);
+      page.removeAttribute("id");
+      helper.setDataInfo(page, data);
+      page.addEventListener("click", handleOption);
+
+      return page;
+    }
+};
+
+const newPost = {
+  render(data) {
+    let handleOption = (event) => {
+      event.preventDefault();
+      let action = event.target.dataset.action;
+      if(action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
+        let form = page.querySelector("form");
+        model.addNewPost(data.id, form.title.value, form.content.value, () =>{
+          presenter[action](data.id);
+        });   
+      }
+      else if(action === "cancle") {
+        presenter[action](data.id);
+     }
+    };
+
+    console.log("View: render() von newPost");
+
+    let page = document 
+      .getElementById("new-Post-scheme")
+      .cloneNode(true);
+    page.removeAttribute("id");
+    helper.setDataInfo(page, data);
+    page.addEventListener("click", handleOption);
 
     return page;
   }

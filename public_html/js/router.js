@@ -24,6 +24,7 @@ const router = (function () {
 
         // Wird als Eventhandler an ein <a>-Element gebunden
         handleNavigationEvent(event) {
+            console.log("drinne");
             event.preventDefault();
             let url = event.target.href;
             this.navigateToPage(url);
@@ -71,15 +72,15 @@ const router = (function () {
 
     // new-Post-Page
     router.addRoute('new', (url) => {
-        let blogId = url.split('new')[1].trim();
-        console.log(`new Post of Blog ${blogId}`);
+        let blogId = url.split('new/')[1].trim();
+        presenter.showNewPost(blogId);
     });
 
     router.addRoute('edit', (url) => {
         let trimmedUrl = url.split('edit/')[1].trim();
         let postId = trimmedUrl.split('/ofBlog/')[0].trim();
         let blogId = trimmedUrl.split('/ofBlog/')[1].trim();
-        console.log(`edit Post ${postId} of Blog ${blogId}`);
+        presenter.showEdit(blogId, postId);
     });
 
 
