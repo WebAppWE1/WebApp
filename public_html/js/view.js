@@ -21,9 +21,7 @@ const blogOverview = {
   render(data) {
     console.log("View: render() von blogOverview");
 
-    let page = document
-      .getElementById("blog-overview-scheme")
-      .cloneNode(true);
+    let page = document.getElementById("blog-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
     let list = page.querySelector("ul");
     let listEleTemp = list.firstElementChild;
@@ -42,9 +40,7 @@ const blogInfo = {
   render(data) {
     console.log("View: render() von blogInfo");
 
-    let page = document
-      .getElementById("blog-info-scheme")
-      .cloneNode(true);
+    let page = document.getElementById("blog-info-scheme").cloneNode(true);
     page.removeAttribute("id");
     data.setFormatDates(false);
     helper.setDataInfo(page, data);
@@ -55,33 +51,20 @@ const blogInfo = {
 
 const postOverview = {
   render(data) {
-    let handleDelete = (event) => {
-      let action = event.target.dataset.action;
-      if(action === "delete" && confirm("Wollen Sie den Post wirklich löschen?")) {
-        let source = event.target.closest("ARTICLE");
-        console.log(source);
-        if(source) {
-          presenter.deletePost(source.dataset.blogid, source.dataset.postid);
-        }
-      }
-    };
-
     console.log("View: render() von postOverview");
 
-    let page = document
-      .getElementById("post-overview-scheme")
-      .cloneNode(true);
+    let page = document.getElementById("post-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
     let article = page.querySelector("article");
     article.removeAttribute("id");
     article.remove();
     for (let value of data) {
       let content = article.cloneNode(true);
-      page.append(content); 
+      page.append(content);
       value.setFormatDates(false);
       helper.setDataInfo(page, value);
     }
-    page.addEventListener("click", handleDelete);
+    page.addEventListener("click", helper.handleDelete);
 
     return page;
   },
@@ -90,10 +73,8 @@ const postOverview = {
 const postDetail = {
   render(dataPost, dataComment) {
     console.log("View: render() von postDetail");
-    
-    let page = document
-      .getElementById("post-detail-scheme")
-      .cloneNode(true);
+
+    let page = document.getElementById("post-detail-scheme").cloneNode(true);
     page.removeAttribute("id");
     let articlePost = page.querySelector("article");
     articlePost.remove();
@@ -115,38 +96,42 @@ const postDetail = {
       helper.setDataInfo(comments, value);
     }
     page.append(comments);
+    page.addEventListener("click", helper.handleDelete);
 
     return page;
-  }
+  },
 };
 
 const postEdit = {
-    render(data) {
-      let handleOption = (event) => {
-        event.preventDefault();
-        let action = event.target.dataset.action;
-        if(action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
-          let form = page.querySelector("form");
-          model.updatePost(data.blogId, data.id, form.title.value, page.querySelector("div").innerHTML, (result) => {
+  render(data) {
+    let handleOption = (event) => {
+      event.preventDefault();
+      let action = event.target.dataset.action;
+      if (action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
+        let form = page.querySelector("form");
+        model.updatePost(
+          data.blogId,
+          data.id,
+          form.title.value,
+          page.querySelector("div").innerHTML,
+          (result) => {
             presenter[action](data.blogId, data.id);
-          });
-        }
-        else if(action === "cancle") {
-          presenter[action](data.blogId, data.id);
-        }
-      };
-      
-      console.log("View: render() von postEdit");
+          }
+        );
+      } else if (action === "cancle") {
+        presenter[action](data.blogId, data.id);
+      }
+    };
 
-      let page = document
-        .getElementById("edit-scheme")
-        .cloneNode(true);
-      page.removeAttribute("id");
-      helper.setDataInfo(page, data);
-      page.addEventListener("click", handleOption);
+    console.log("View: render() von postEdit");
 
-      return page;
-    }
+    let page = document.getElementById("edit-scheme").cloneNode(true);
+    page.removeAttribute("id");
+    helper.setDataInfo(page, data);
+    page.addEventListener("click", handleOption);
+
+    return page;
+  },
 };
 
 const newPost = {
@@ -154,28 +139,25 @@ const newPost = {
     let handleOption = (event) => {
       event.preventDefault();
       let action = event.target.dataset.action;
-      if(action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
+      if (action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
         let form = page.querySelector("form");
-        model.addNewPost(data.id, form.title.value, form.content.value, () =>{
+        model.addNewPost(data.id, form.title.value, form.content.value, () => {
           presenter[action](data.id);
-        });   
-      }
-      else if(action === "cancle") {
+        });
+      } else if (action === "cancle") {
         presenter[action](data.id);
-     }
+      }
     };
 
     console.log("View: render() von newPost");
 
-    let page = document 
-      .getElementById("new-Post-scheme")
-      .cloneNode(true);
+    let page = document.getElementById("new-Post-scheme").cloneNode(true);
     page.removeAttribute("id");
     helper.setDataInfo(page, data);
     page.addEventListener("click", handleOption);
 
     return page;
-  }
+  },
 };
 
 /**
@@ -189,5 +171,26 @@ const helper = {
       content = content.replace(rexp, object[key]);
     }
     element.innerHTML = content;
+  },
+
+  handleDelete(event) {
+    event.preventDefault();
+    let action = event.target.dataset.action;
+    let source = event.target.closest("ARTICLE");
+    if (
+      action === "postDelete" &&
+      confirm("Wollen Sie den Post wirklich löschen?")
+    ) {
+      presenter.deletePost(source.dataset.blogid, source.dataset.postid);
+    } else if (
+      action === "commentDelete" &&
+      confirm("Wollen Sie den Kommentar wirklich löschen?")
+    ) {
+      presenter.deleteComment(
+        source.dataset.blogid,
+        source.dataset.postid,
+        source.dataset.commentid
+      );
+    }
   },
 };

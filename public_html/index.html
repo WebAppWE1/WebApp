@@ -54,7 +54,7 @@ and open the template in the editor.
             <p>Anzahl Posts: %postCount</p>
             <p>%formatedCreationDate</p>
             <p>%formatedAlterationDate</p>
-            <a href="%url">Zum Google-Blog</a>
+            <a href="%url" data-type="extern">Zum Google-Blog</a>
         </div>
 
         <div id="post-overview-scheme">
@@ -72,7 +72,7 @@ and open the template in the editor.
                 <footer>
                     <nav>
                         <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                        <button type="button" data-action="delete">Delete</button>
+                        <button type="button" data-action="postDelete">Delete</button>
                     </nav>
                 </footer>
             </article>
@@ -82,7 +82,7 @@ and open the template in the editor.
             <nav>
                 <button type="button" data-path="/overview/%blogId">Zurück zur Übersicht</button>
             </nav>
-            <article>
+            <article data-blogid="%blogId" data-postid="%id">
                 <header>
                     <h2>%postname</h2>
                     <p>%formatedCreationDate</p>
@@ -94,7 +94,7 @@ and open the template in the editor.
                 <footer>
                     <nav>
                         <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                        <button type="button" data-action="delete">Delete</button>
+                        <button type="button" data-action="postDelete">Delete</button>
                     </nav>
                 </footer>
             </article>
@@ -103,7 +103,7 @@ and open the template in the editor.
         <div id="comment-section-scheme">
             <h2>Kommentare</h2>
 
-            <article>
+            <article data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
                 <header>
                     <p>%creatorName</p>
                     <p>%creationDate</p>
@@ -112,7 +112,7 @@ and open the template in the editor.
                     %commentText
                 </section>
                 <footer>
-                    <button type="button" data-action="delete">Delete</button>
+                    <button type="button" data-action="commentDelete">Delete</button>
                 </footer>
             </article>
         </div>

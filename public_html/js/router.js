@@ -24,7 +24,6 @@ const router = (function () {
 
         // Wird als Eventhandler an ein <a>-Element gebunden
         handleNavigationEvent(event) {
-            console.log("drinne");
             event.preventDefault();
             let url = event.target.href;
             this.navigateToPage(url);

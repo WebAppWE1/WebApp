@@ -43,8 +43,12 @@ const presenter = (function () {
     // die in ein Li-Tag eingebunden sind.
     switch (event.target.tagName) {
         case "A":
-            router.handleNavigationEvent(event);
-            break;
+            if(event.target.dataset.type === "extern") {
+              break;
+            } else {
+              router.handleNavigationEvent(event);
+              break;
+            }
         case "BUTTON":
             source = event.target;
             break;
@@ -209,6 +213,7 @@ const presenter = (function () {
       model.deleteComment(blogId, postId, commentId, (result) => {
         console.log(`Comment ${commentId} wurde gelöscht`);
         alert("Kommentar wurde gelöscht");
+        this.showPostDetail(blogId, postId);
       });
     },
 
@@ -219,6 +224,8 @@ const presenter = (function () {
         alert("Post wurde gelöscht");
         if(detail) {
           router.navigateToPage(`/overview/${blogId}`);
+        } else {
+          this.showPostOverview(blogId);
         }
       });
     }
