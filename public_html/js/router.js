@@ -33,7 +33,6 @@ const router = (function () {
         handleRouting() {
             console.log("Aufruf von router.handleRouting(): Navigation zu: " + window.location.pathname);
             const currentPage = window.location.pathname.split('/')[1];
-            console.log(`current Page is ${currentPage}`);
             let routeHandler = mapRouteToHandler.get(currentPage);
             if (routeHandler === undefined)
                 routeHandler = mapRouteToHandler.get(''); //Startseite
