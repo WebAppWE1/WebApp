@@ -212,7 +212,6 @@ const presenter = (function () {
 
       model.deleteComment(blogId, postId, commentId, (result) => {
         console.log(`Comment ${commentId} wurde gelöscht`);
-        alert("Kommentar wurde gelöscht");
         this.showPostDetail(blogId, postId);
       });
     },
@@ -221,7 +220,6 @@ const presenter = (function () {
       console.log("Aufruf von presenter.deletePost");
 
       model.deletePost(blogId, postId, (result) => {
-        alert("Post wurde gelöscht");
         if(detail) {
           router.navigateToPage(`/overview/${blogId}`);
         } else {

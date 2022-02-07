@@ -107,17 +107,26 @@ const postEdit = {
     let handleOption = (event) => {
       event.preventDefault();
       let action = event.target.dataset.action;
-      if (action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
-        let form = page.querySelector("form");
-        model.updatePost(
-          data.blogId,
-          data.id,
-          form.title.value,
-          page.querySelector("div").innerHTML,
-          (result) => {
-            presenter[action](data.blogId, data.id);
+      if (action === "save") {
+        swal({
+          title: "Änderung erkannt",
+          text: `Wollen Sie die Änderungen wirklich speichern?`,
+          icon: "warning",
+          buttons: true,
+        }).then((result) => {
+          if (result) {
+            let form = page.querySelector("form");
+            model.updatePost(
+              data.blogId,
+              data.id,
+              form.title.value,
+              page.querySelector("div").innerHTML,
+              (result) => {
+                presenter[action](data.blogId, data.id);
+              }
+            );
           }
-        );
+        });
       } else if (action === "cancle") {
         presenter[action](data.blogId, data.id);
       }
@@ -139,10 +148,24 @@ const newPost = {
     let handleOption = (event) => {
       event.preventDefault();
       let action = event.target.dataset.action;
-      if (action === "save" && confirm("Wollen Sie die Änderung speichern?")) {
-        let form = page.querySelector("form");
-        model.addNewPost(data.id, form.title.value, form.content.value, () => {
-          presenter[action](data.id);
+      if (action === "save") {
+        swal({
+          title: "Änderung erkannt",
+          text: `Wollen Sie die Änderungen wirklich speichern?`,
+          icon: "warning",
+          buttons: true,
+        }).then((result) => {
+          if (result) {
+            let form = page.querySelector("form");
+            model.addNewPost(
+              data.id,
+              form.title.value,
+              form.content.value,
+              () => {
+                presenter[action](data.id);
+              }
+            );
+          }
         });
       } else if (action === "cancle") {
         presenter[action](data.id);
@@ -177,20 +200,40 @@ const helper = {
     event.preventDefault();
     let action = event.target.dataset.action;
     let source = event.target.closest("ARTICLE");
-    if (
-      action === "postDelete" &&
-      confirm("Wollen Sie den Post wirklich löschen?")
-    ) {
-      presenter.deletePost(source.dataset.blogid, source.dataset.postid);
-    } else if (
-      action === "commentDelete" &&
-      confirm("Wollen Sie den Kommentar wirklich löschen?")
-    ) {
-      presenter.deleteComment(
-        source.dataset.blogid,
-        source.dataset.postid,
-        source.dataset.commentid
-      );
+    if (action === "postDelete") {
+      swal({
+        title: "Bist du dir sicher?",
+        text: `Wollen Sie den Post wirklich löschen?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          swal(`Der Post wurde gelöscht!`, {
+            icon: "success",
+          });
+          presenter.deletePost(source.dataset.blogid, source.dataset.postid);
+        }
+      });
+    } else if (action === "commentDelete") {
+      swal({
+        title: "Bist du dir sicher?",
+        text: `Wollen Sie den Kommentar wirklich löschen?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          swal(`Der Kommentar wurde gelöscht!`, {
+            icon: "success",
+          });
+          presenter.deleteComment(
+            source.dataset.blogid,
+            source.dataset.postid,
+            source.dataset.commentid
+          );
+        }
+      });
     }
   },
 };
