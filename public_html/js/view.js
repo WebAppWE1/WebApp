@@ -23,6 +23,18 @@ const blogOverview = {
 
     let page = document.getElementById("blog-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
+
+    // view for select-tag
+    let select = page.querySelector("select");
+    let option = select.lastElementChild;
+    option.remove();
+    for (let val of data) {
+      let optionTemp = option.cloneNode(true);
+      select.appendChild(optionTemp);
+      helper.setDataInfo(select, val);
+    }
+    select.addEventListener("click", helper.handleChange);
+
     let list = page.querySelector("ul");
     let listEleTemp = list.firstElementChild;
     listEleTemp.remove();
@@ -194,6 +206,11 @@ const helper = {
       content = content.replace(rexp, object[key]);
     }
     element.innerHTML = content;
+  },
+
+  handleChange(event) {
+    let value = event.target.value;
+    router.navigateToPage(value);
   },
 
   handleDelete(event) {

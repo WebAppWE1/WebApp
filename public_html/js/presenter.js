@@ -118,8 +118,11 @@ const presenter = (function () {
       overview = false;
     },
 
+    /** 
     showBlogInfo(blogId) {
       console.log(`Aufruf von presenter.showBlogInfo von Blog ${blogId}`);
+
+      if(!init) initPage();
 
       model.getBlog(blogId, blog => {
         console.log("BlogInfo wird aufgerufen...");
@@ -131,6 +134,7 @@ const presenter = (function () {
       detail = false;
 
     },
+    */
 
     showPostOverview(blogId) {
       console.log(`Aufruf von presenter.showPostOverview von Blog ${blogId}`);
@@ -139,6 +143,11 @@ const presenter = (function () {
       model.getAllPostsOfBlog(blogId, (posts) => {
         let element = postOverview.render(posts);
         replace("main-section", element);
+      });
+      model.getBlog(blogId, blog => {
+        console.log("BlogInfo wird aufgerufen...");
+        let element = blogInfo.render(blog);
+        replace("blog-detail-info", element);
       });
 
       detail = false;

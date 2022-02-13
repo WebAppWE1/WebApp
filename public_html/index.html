@@ -20,7 +20,6 @@ and open the template in the editor.
     <script defer src="js/presenter.js"></script>
     <script defer src="js/router.js"></script>
     <script defer src="js/view.js"></script>
-    <script defer src="js/alerts.js"></script>
 </head>
 
 <body>
@@ -45,15 +44,26 @@ and open the template in the editor.
         </div>
 
         <nav id="blog-overview-scheme">
+            <div class="nav-select">
+                <label for="blogs">Wähle einen Blog aus:</label>
+                <select name="blogs" id="blogs">
+                    <option value="">
+                        ---------------------
+                    </option>
+                    <option value="/overview/%id">
+                        %blogname (%postCount)
+                    </option>
+                </select>
+            </div>
             <ul>
-                <li data-path="/info/%id">
+                <li data-path="/overview/%id">
                     %blogname (%postCount)
                 </li>
             </ul>
         </nav>
 
         <div id="blog-info-scheme">
-            <h2><a href="/overview/%id">%blogname</a></h2>
+            <h2>%blogname</h2>
             <p>Anzahl Posts: %postCount</p>
             <p>%formatedCreationDate</p>
             <p>%formatedAlterationDate</p>
