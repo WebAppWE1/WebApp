@@ -9,7 +9,6 @@ const presenter = (function () {
   // Private Variablen und Funktionen
   let init = false;
   let owner = null;
-  let overview = false;
   let detail = false;
   
   // Initialisiert die allgemeinen Teile der Seite
@@ -26,14 +25,21 @@ const presenter = (function () {
 
     presenter.showBlogOverview();
 
-    let blogoverviewpart = document.getElementById("blog-overview");
-    blogoverviewpart.addEventListener("click", handleClicks);
-    let blogOverview = document.getElementById("blog-detail-info");
-    blogOverview.addEventListener("click", handleClicks);
+    let blognavbar = document.getElementById("blog-navbar");
+    blognavbar.addEventListener("click", handleClicks);
     let main = document.getElementById("main-section");
     main.addEventListener("click", handleClicks);
 
     init = true;
+    /** 
+    // Startpage immer einen Blog auswählen
+    if(window.location.pathname === "/") {
+      model.getAllBlogs(blogs => {
+        let blogId = blogs[0].id;
+        router.navigateToPage('/overview/' + blogId);
+      });
+    }
+    */
   }
 
   // Event Handler für alle Navigations-Events auf der Seite
@@ -115,26 +121,7 @@ const presenter = (function () {
         replace("blog-overview", element);
       });
       detail = false;
-      overview = false;
     },
-
-    /** 
-    showBlogInfo(blogId) {
-      console.log(`Aufruf von presenter.showBlogInfo von Blog ${blogId}`);
-
-      if(!init) initPage();
-
-      model.getBlog(blogId, blog => {
-        console.log("BlogInfo wird aufgerufen...");
-        let element = blogInfo.render(blog);
-        replace("blog-detail-info", element);
-      });
-
-      if(overview) {replace("main-section");}
-      detail = false;
-
-    },
-    */
 
     showPostOverview(blogId) {
       console.log(`Aufruf von presenter.showPostOverview von Blog ${blogId}`);
@@ -151,7 +138,6 @@ const presenter = (function () {
       });
 
       detail = false;
-      overview = true;
     },
 
     showPostDetail(blogId, postId) {
@@ -168,7 +154,6 @@ const presenter = (function () {
       });
 
       detail = true;
-      overview = true;
     },
 
     showEdit(blogId, postId) {

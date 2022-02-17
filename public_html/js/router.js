@@ -47,12 +47,6 @@ const router = (function () {
     router.addRoute('', () => {
         presenter.showStartPage();
     });
-        
-    // Blog-Info-Page
-    router.addRoute("info", (url) => {
-        let blogId = url.split("info/")[1].trim();
-        presenter.showBlogInfo(blogId);
-    });
     
     // Post-Overview-Page
     router.addRoute('overview', (url) => {
@@ -84,9 +78,8 @@ const router = (function () {
 
     if (window) {
         window.addEventListener('popstate', (event) => {
-            router.handleRouting(window.location.pathname);
+            router.handleRouting();
         });
-        router.handleRouting(window.location.pathname);
     }
 })();
 

@@ -24,7 +24,7 @@ const blogOverview = {
     let page = document.getElementById("blog-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
 
-    // view for select-tag
+    // view for select-tag 
     let select = page.querySelector("select");
     let option = select.lastElementChild;
     option.remove();
@@ -67,15 +67,20 @@ const postOverview = {
 
     let page = document.getElementById("post-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
+
+    let button = page.querySelector("nav");
+    let container = page.querySelector(".article-container");
     let article = page.querySelector("article");
     article.removeAttribute("id");
     article.remove();
     for (let value of data) {
       let content = article.cloneNode(true);
-      page.append(content);
+      container.append(content);
       value.setFormatDates(false);
-      helper.setDataInfo(page, value);
+      helper.setDataInfo(container, value);
+      helper.setDataInfo(button, value);
     }
+    page.append(container);
     page.addEventListener("click", helper.handleDelete);
 
     return page;
