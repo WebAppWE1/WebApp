@@ -32,6 +32,8 @@ const presenter = (function () {
     blogOverview.addEventListener("click", handleClicks);
     let main = document.getElementById("main-section");
     main.addEventListener("click", handleClicks);
+    window.addEventListener("resize", handleResize);
+    
 
     init = true;
   }
@@ -62,6 +64,22 @@ const presenter = (function () {
             router.navigateToPage(path);
     }
 }
+
+function handleResize(event){
+    console.log(window.innerWidth);
+    
+    let w = window.innerWidth;
+    
+    if(w < 500){
+        
+        blogOverview.small();
+    }
+    else{
+        blogOverview.big();
+    }
+}
+
+
   
   // Sorgt dafür, dass bei einem nicht-angemeldeten Nutzer nur noch der Name der Anwendung
   // und der Login-Button angezeigt wird.
@@ -221,18 +239,18 @@ const presenter = (function () {
 
       model.deleteComment(blogId, postId, commentId, (result) => {
         console.log(`Comment ${commentId} wurde gelöscht`);
-        this.showPostDetail(blogId, postId);
+        
       });
     },
 
     deletePost(blogId, postId) {
       console.log("Aufruf von presenter.deletePost");
-
+      
       model.deletePost(blogId, postId, (result) => {
         if(detail) {
           router.navigateToPage(`/overview/${blogId}`);
         } else {
-          this.showPostOverview(blogId);
+          //.showPostOverview(blogId);
         }
       });
     }

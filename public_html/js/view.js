@@ -23,6 +23,7 @@ const blogOverview = {
 
     let page = document.getElementById("blog-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
+    
 
     // view for select-tag
     let select = page.querySelector("select");
@@ -45,6 +46,12 @@ const blogOverview = {
     }
 
     return page;
+  },
+  small(){
+      console.log("SMOL")
+  },
+  big(){
+      console.log("BEEG")
   },
 };
 
@@ -230,6 +237,7 @@ const helper = {
             icon: "success",
           });
           presenter.deletePost(source.dataset.blogid, source.dataset.postid);
+          source.closest("article").hidden = true;
         }
       });
     } else if (action === "commentDelete") {
@@ -244,6 +252,7 @@ const helper = {
           swal(`Der Kommentar wurde gelöscht!`, {
             icon: "success",
           });
+          source.closest("article").hidden=true;
           presenter.deleteComment(
             source.dataset.blogid,
             source.dataset.postid,
