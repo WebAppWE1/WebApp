@@ -1,0 +1,73 @@
+// navbar and blog-info
+.main-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  
+    @include breakpoint("desktop") {
+      flex-direction: row;
+      height: 30rem;
+    }
+    #blog-navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem 0;
+      .nav-select {
+          margin-bottom: 1rem;
+        @include breakpoint("tablet") {
+          display: none;
+        }
+        label {
+          margin: 0 0.5rem;
+        }
+        select {
+          width: 100%;
+        }
+      }
+      .nav-list {
+        display: none;
+  
+        @include breakpoint("tablet") {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          list-style-type: none;
+        }
+      }
+  
+      @include breakpoint("tablet") {
+        flex-direction: row;
+        #blog-detail-info {
+          width: 50%;
+          text-align: center;
+        }
+        #blog-overview {
+          width: 50%;
+          height: 7rem;
+          text-align: center;
+          overflow: auto;
+        }
+      }
+      @include breakpoint("desktop") {
+        width: 30%;
+        flex-direction: column;
+        #blog-detail-info {
+          width: 100%;
+          height: 33%;
+          margin: 1rem auto;
+        }
+        #blog-overview {
+          width: 100%;
+          height: 67%;
+          margin: 1rem auto;
+        }
+      }
+    }
+    #main-section {
+      @include breakpoint("desktop") {
+        width: 70%;
+        height: 30rem;
+      }
+    }
+  }

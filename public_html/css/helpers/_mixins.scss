@@ -1,0 +1,11 @@
+@import "./variables";
+
+// breakpoints
+@mixin breakpoint($breakpoint, $direction: 'min') {
+
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    }
+}

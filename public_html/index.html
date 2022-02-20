@@ -21,7 +21,7 @@ and open the template in the editor.
     <script defer src="js/router.js"></script>
     <script defer src="js/view.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="./scss/main.css">
+    <link type="text/css" rel="stylesheet" href="./css/main.css">
     <!--<link type="text/css" rel="stylesheet" href="./test/test.css">-->
 
 </head>
@@ -31,8 +31,10 @@ and open the template in the editor.
         <div class="user-information">
             <h1 class="title-header">BLOGGER</h1>
             <div class="login-information">
-                <div id="auth-status"></div>
-                <div id="user-info"></div>
+                <div class="info-block">
+                    <div id="user-info"></div>
+                    <div id="auth-status"></div>
+                </div>
                 <button id="sign-in-or-out-button">Anmelden</button>
             </div>
         </div>
@@ -63,10 +65,10 @@ and open the template in the editor.
                     </option>
                 </select>
             </div>
-            <ul>
+            <ul class="nav-list">
                 <li data-path="/overview/%id">
                     %blogname (%postCount)
-                </li>
+                </li> 
             </ul>
         </nav>
 
@@ -141,22 +143,22 @@ and open the template in the editor.
             </article>
         </div>
 
-        <div id="edit-scheme">
+        <div id="edit-scheme" class="editor">
             <h2>Post Editor</h2>
-            <form class="editor">
+            <form>
                 <fieldset>
                     <ul>
-                        <li>
+                        <li class="input">
                             <label for="title">Titel des Posts:</label>
-                            <input id="title" type="text" name="title" value="%postname">
+                            <input id="title" class="editable-content" type="text" name="title" value="%postname">
                         </li>
-                        <li>
+                        <li class="input">
                             <label for="content">Inhalt des Posts:</label>
-                            <div id="content" contenteditable="true">
+                            <div class="editable-content" contenteditable="true">
                                 %postText
                             </div>
                         </li>
-                        <li>
+                        <li class="buttons">
                             <nav>
                                 <button type="button" value="cancle" data-action="cancle">Abbrechen</button>
                                 <button type="button" value="save" data-action="save">Speichern</button>
@@ -167,20 +169,21 @@ and open the template in the editor.
             </form>
         </div>
 
-        <div id="new-Post-scheme">
+        <div id="new-Post-scheme" class="editor">
             <h2>Neuen Post anlegen</h2>
-            <form class="editor">
+            <form>
                 <fieldset>
                     <ul>
-                        <li>
+                        <li class="input">
                             <label for="title">Titel des Posts:</label>
-                            <input id="title" type="text" name="title" placeholder="Title des Post">
+                            <input id="title" class="editable-content" type="text" name="title"
+                                placeholder="Title des Post">
                         </li>
-                        <li>
+                        <li class="input">
                             <label for="content">Inhalt des Posts:</label>
-                            <textarea id="content" name="content" rows="5" cols="50"></textarea>
+                            <textarea id="content" class="editable-content" name="content" rows="5"></textarea>
                         </li>
-                        <li>
+                        <li class="buttons">
                             <nav>
                                 <button type="button" value="cancle" data-action="cancle">Abbrechen</button>
                                 <button type="button" value="save" data-action="save">Speichern</button>
