@@ -78,7 +78,6 @@ const postOverview = {
 
     let container = page.querySelector(".article-container");
     let article = page.querySelector("article");
-    article.removeAttribute("id");
     article.remove();
     for (let value of data) {
       let content = article.cloneNode(true);
@@ -110,14 +109,17 @@ const postDetail = {
       .getElementById("comment-section-scheme")
       .cloneNode(true);
     comments.removeAttribute("id");
+    let container = comments.querySelector(".comments-container");
     let articleComment = comments.querySelector("article");
     articleComment.remove();
     for (let value of dataComment) {
       let contentComment = articleComment.cloneNode(true);
-      comments.append(contentComment);
+      container.append(contentComment);
       value.setFormatDates(true);
-      helper.setDataInfo(comments, value);
+      console.log(value);
+      helper.setDataInfo(container, value);
     }
+    comments.append(container);
     page.append(comments);
     page.addEventListener("click", helper.handleDelete);
 

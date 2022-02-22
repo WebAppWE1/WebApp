@@ -1,0 +1,36 @@
+@import "../helpers/variables";
+
+// Post-Overview cards
+.post-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+    background-color: $rosa;
+    border-radius: 0.75rem;
+    header {
+        margin: 0 1rem;
+    }
+    footer {
+        align-self: flex-end;
+        margin: 0 1rem;
+        button {
+            padding: 0.25rem 0.5rem;
+            background-color: $eggshell;
+            border-color: $eggshell;
+            border-radius: 0.5rem;
+        }
+    }
+}
+
+// Post-Detail card + comments
+.post-detail {
+    .comments {
+        .comments-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+}

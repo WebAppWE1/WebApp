@@ -10,6 +10,7 @@ const presenter = (function () {
   let init = false;
   let owner = null;
   let detail = false;
+  let editor = false;
   
   // Initialisiert die allgemeinen Teile der Seite
   function initPage() {
@@ -31,7 +32,7 @@ const presenter = (function () {
     main.addEventListener("click", handleClicks);
 
     init = true;
-    /** 
+     
     // Startpage immer einen Blog auswählen
     if(window.location.pathname === "/") {
       model.getAllBlogs(blogs => {
@@ -39,7 +40,6 @@ const presenter = (function () {
         router.navigateToPage('/overview/' + blogId);
       });
     }
-    */
   }
 
   // Event Handler für alle Navigations-Events auf der Seite

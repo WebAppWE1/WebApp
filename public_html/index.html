@@ -86,7 +86,7 @@ and open the template in the editor.
             </nav>
 
             <div class="article-container">
-                <article id="post-info-scheme" class="post-article" data-blogid="%blogId" data-postid="%id">
+                <article class="post-article" data-blogid="%blogId" data-postid="%id">
                     <header>
                         <h2><a href="/detail/%id/ofBlog/%blogId">%postname</a></h2>
                         <p>%formatedCreationDate</p>
@@ -129,18 +129,20 @@ and open the template in the editor.
         <div id="comment-section-scheme" class="comments">
             <h2>Kommentare</h2>
 
-            <article data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
-                <header>
-                    <p>%creatorName</p>
-                    <p>%creationDate</p>
-                </header>
-                <section>
-                    %commentText
-                </section>
-                <footer>
-                    <button type="button" data-action="commentDelete">Delete</button>
-                </footer>
-            </article>
+            <div class="comments-container">
+                <article data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
+                    <header>
+                        <p>%creatorName</p>
+                        <p>%formatedCreationDate</p>
+                    </header>
+                    <section>
+                        %commentText
+                    </section>
+                    <footer>
+                        <button type="button" data-action="commentDelete">Delete</button>
+                    </footer>
+                </article>
+            </div>
         </div>
 
         <div id="edit-scheme" class="editor">

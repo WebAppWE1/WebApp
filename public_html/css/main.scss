@@ -9,52 +9,9 @@
 @import "./layouts/navbar";
 @import "./layouts/main-section";
 
+@import "./components/cards";
+
 html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-}
-
-//editor
-.editor {
-  display: flex;
-  flex-direction: column;
-  margin: 0 5%;
-
-  @include breakpoint("mobile") {
-    margin: 0 auto;
-    width: 60%;
-  }
-  @include breakpoint("tablet") {
-    
-  }
-  h2 {
-    
-  }
-  form {
-    margin-left: 1rem;
-
-    @include breakpoint("mobile") {
-      margin: 0;
-      padding-left: 1.5rem;
-    }
-    ul {
-      list-style-type: none;
-      .input {
-        .editable-content {
-          margin: 0.5rem 1.5rem;
-        }
-        label {
-          display: block;
-        }
-      }
-      .buttons {
-        nav {
-          margin: 1rem 0;
-          button {
-            margin: 0 0.5rem;
-          }
-        }
-      }
-    }
-  }
 }

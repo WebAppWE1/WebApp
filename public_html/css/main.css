@@ -286,7 +286,8 @@ section, summary, time, mark, audio, video {
 
 @media (min-width: 750px) {
   .post-detail {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
   }
 }
@@ -303,6 +304,25 @@ section, summary, time, mark, audio, video {
 
 .comments {
   margin: 1.5rem 1rem;
+  width: 100%;
+}
+
+.comments .comments-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.5rem 0;
+}
+
+.comments .comments-container article {
+  margin: 2rem;
 }
 
 .editor {
@@ -352,59 +372,56 @@ section, summary, time, mark, audio, video {
 
 .editor form ul .buttons nav button {
   margin: 0 0.5rem;
+}
+
+.post-article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem;
+  background-color: #FFE2E2;
+  border-radius: 0.75rem;
+}
+
+.post-article header {
+  margin: 0 1rem;
+}
+
+.post-article footer {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0 1rem;
+}
+
+.post-article footer button {
+  padding: 0.25rem 0.5rem;
+  background-color: #F6F6F6;
+  border-color: #F6F6F6;
+  border-radius: 0.5rem;
+}
+
+.post-detail .comments .comments-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-}
-
-.editor {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0 5%;
-}
-
-@media (min-width: 300px) {
-  .editor {
-    margin: 0 auto;
-    width: 60%;
-  }
-}
-
-.editor form {
-  margin-left: 1rem;
-}
-
-@media (min-width: 300px) {
-  .editor form {
-    margin: 0;
-    padding-left: 1.5rem;
-  }
-}
-
-.editor form ul {
-  list-style-type: none;
-}
-
-.editor form ul .input .editable-content {
-  margin: 0.5rem 1.5rem;
-}
-
-.editor form ul .input label {
-  display: block;
-}
-
-.editor form ul .buttons nav {
-  margin: 1rem 0;
-}
-
-.editor form ul .buttons nav button {
-  margin: 0 0.5rem;
 }
 /*# sourceMappingURL=main.css.map */
