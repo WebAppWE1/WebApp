@@ -128,7 +128,7 @@ const presenter = (function () {
       if (!init) initPage();
 
       model.getAllPostsOfBlog(blogId, (posts) => {
-        let element = postOverview.render(posts);
+        let element = postOverview.render(posts, blogId);
         replace("main-section", element);
       });
       model.getBlog(blogId, blog => {

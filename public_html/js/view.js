@@ -62,13 +62,20 @@ const blogInfo = {
 };
 
 const postOverview = {
-  render(data) {
+  render(data, emptyDataBlogId) {
     console.log("View: render() von postOverview");
 
     let page = document.getElementById("post-overview-scheme").cloneNode(true);
     page.removeAttribute("id");
 
     let button = page.querySelector("nav");
+    if (data.length === 0) {
+      data.blogId = emptyDataBlogId;
+      helper.setDataInfo(button, data);
+    } else {
+      helper.setDataInfo(button, data[0]);
+    }
+
     let container = page.querySelector(".article-container");
     let article = page.querySelector("article");
     article.removeAttribute("id");
@@ -78,7 +85,6 @@ const postOverview = {
       container.append(content);
       value.setFormatDates(false);
       helper.setDataInfo(container, value);
-      helper.setDataInfo(button, value);
     }
     page.append(container);
     page.addEventListener("click", helper.handleDelete);

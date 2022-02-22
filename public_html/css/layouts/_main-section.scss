@@ -1,13 +1,27 @@
+// main-section
+#main-section {
+  margin: 1rem;
+
+  @include breakpoint("tablet") {
+    margin: 2rem;
+  }
+}
+
 // postoverview-section
 .post-overview {
     width: 100%;
     #new-post-button {
-      margin: 0.75rem 1rem;
+      margin: 0.75rem 0.5rem;
+
+      @include breakpoint("mobile") {
+        margin: 0.75rem 1rem;
+      }
     }
     .article-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      margin: 1.5rem 0;
       .post-article {
         width: 15rem;
         height: 10rem;
@@ -37,3 +51,45 @@
   .comments {
     margin: 1.5rem 1rem;
   }
+
+  //editor
+.editor {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5%;
+
+  @include breakpoint("mobile") {
+    margin: 0 auto;
+    width: 60%;
+  }
+  @include breakpoint("tablet") {
+    
+  }
+  form {
+    margin-left: 1rem;
+
+    @include breakpoint("mobile") {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    ul {
+      list-style-type: none;
+      .input {
+        .editable-content {
+          margin: 0.5rem 1.5rem;
+        }
+        label {
+          display: block;
+        }
+      }
+      .buttons {
+        nav {
+          margin: 1rem 0;
+          button {
+            margin: 0 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

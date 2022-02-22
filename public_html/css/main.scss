@@ -18,20 +18,24 @@ html {
 .editor {
   display: flex;
   flex-direction: column;
-  margin: 0 15%;
+  margin: 0 5%;
 
   @include breakpoint("mobile") {
-    margin: auto;
+    margin: 0 auto;
     width: 60%;
   }
+  @include breakpoint("tablet") {
+    
+  }
   h2 {
-    width: 100%;
+    
   }
   form {
-    margin: 0 2.5rem;
+    margin-left: 1rem;
 
     @include breakpoint("mobile") {
       margin: 0;
+      padding-left: 1.5rem;
     }
     ul {
       list-style-type: none;
