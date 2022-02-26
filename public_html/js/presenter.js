@@ -32,7 +32,7 @@ const presenter = (function () {
     blogOverview.addEventListener("click", handleClicks);
     let main = document.getElementById("main-section");
     main.addEventListener("click", handleClicks);
-    window.addEventListener("resize", handleResize);
+    
     
 
     init = true;
@@ -65,19 +65,7 @@ const presenter = (function () {
     }
 }
 
-function handleResize(event){
-    console.log(window.innerWidth);
-    
-    let w = window.innerWidth;
-    
-    if(w < 500){
-        
-        blogOverview.small();
-    }
-    else{
-        blogOverview.big();
-    }
-}
+
 
 
   
@@ -250,7 +238,7 @@ function handleResize(event){
         if(detail) {
           router.navigateToPage(`/overview/${blogId}`);
         } else {
-          //.showPostOverview(blogId);
+          //.showPostOverview(blogId); Hier wird nur article auf hidden gesetzt
         }
       });
     }

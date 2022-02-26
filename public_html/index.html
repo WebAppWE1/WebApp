@@ -20,72 +20,85 @@ and open the template in the editor.
     <script defer src="js/presenter.js"></script>
     <script defer src="js/router.js"></script>
     <script defer src="js/view.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css">
 </head>
 
 <body>
-    <header>
-        <h1>BLOGGER</h1>
-        <button id="sign-in-or-out-button">Anmelden</button>
-        <div id="user-info"></div>
-        <div id="auth-status"></div>
-        <hr>
-        <div id="header-part">
+    <header class = "header-part">
+       
+        <div class="user-div">
+             <h1>BLOGGER</h1>
+            <button id="sign-in-or-out-button" class="sign-in-out">Anmelden</button>
+            <div id="user-info"></div>
+            
+        </div>
+        <div class="auth" id="auth-status"></div>
+        
+        
+        <div id="header-part" class="upper">
             <div id="blog-overview"></div>
             <div id="blog-detail-info"></div>
         </div>
-        <hr>
+        
     </header>
     <main id="main-section"></main>
 
     <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
     <div id="templates" hidden>
         <div id="user-info-loggedIn-scheme">
-            <p><span class="user">User:</span> %displayName</p>
+            <p class="user"><span>User:</span> %displayName</p>
         </div>
-
-        <nav id="blog-overview-scheme">
+        
+        <nav id="blog-overview-scheme" class="blogov">
+            
             <div class="nav-select">
-                <label for="blogs">Wähle einen Blog aus:</label>
+                
+                
                 <select name="blogs" id="blogs">
                     <option value="">
-                        ---------------------
+                        Wähle einen Blog
                     </option>
                     <option value="/overview/%id">
                         %blogname (%postCount)
                     </option>
                 </select>
             </div>
-            <ul>
-                <li data-path="/overview/%id">
+            <ul class="navlist">
+                <li class="navli" data-path="/overview/%id">
                     %blogname (%postCount)
                 </li>
             </ul>
         </nav>
 
-        <div id="blog-info-scheme">
+        <div id="blog-info-scheme" class="info">
             <h2>%blogname</h2>
-            <p>Anzahl Posts: %postCount</p>
-            <p>%formatedCreationDate</p>
-            <p>%formatedAlterationDate</p>
-            <a href="%url" data-type="extern">Zum Google-Blog</a>
+            <p class="info-p">Anzahl Posts: %postCount</p>
+            <p class="info-p">Erstell am: %formatedCreationDate</p>
+            <p class="info-p">Aktualisiert am: %formatedAlterationDate</p>
+            
+            <a href="%url" data-type="extern" class="info-p">Zum Google-Blog</a>
         </div>
 
-        <div id="post-overview-scheme">
-            <nav id="new-post-button">
-                <button type="button" data-path="/new/%blogId">Neuer Post</button>
+        <div class="overview" id="post-overview-scheme">
+            <nav id="new-post-button" >
+                <button class="newpostbutton" type="button" data-path="/new/%blogId">Neuer Post</button>
             </nav>
 
-            <article id="post-info-scheme" data-blogid="%blogId" data-postid="%id">
+            <article class="overviewpost" id="post-info-scheme" data-blogid="%blogId" data-postid="%id">
                 <header>
-                    <h2><a href="/detail/%id/ofBlog/%blogId">%postname</a></h2>
-                    <p>%formatedCreationDate</p>
-                    <p>%formatedAlterationDate</p>
-                    <p>Kommentare: %commentCount</p>
+                    <h2><a href="/detail/%id/ofBlog/%blogId" class="detaillink">%postname</a></h2>
+                    <p class="overP">Erstellt: %formatedCreationDate</p>
+                    <p class="overP">Zuletzt aktualisiert: %formatedAlterationDate</p>
+                    <p class="overP">Kommentare: %commentCount</p>
                 </header>
-                <footer>
-                    <nav>
-                        <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                        <button type="button" data-action="postDelete">Delete</button>
+                <footer >
+                    <nav class="overeddel">
+                        <div >
+                            <button class="overviewbutton" type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
+                        <button class="overviewbutton" type="button" data-action="postDelete">Delete</button>
+                        </div>
+                        
                     </nav>
                 </footer>
             </article>
@@ -93,21 +106,21 @@ and open the template in the editor.
 
         <div id="post-detail-scheme">
             <nav>
-                <button type="button" data-path="/overview/%blogId">Zurück zur Übersicht</button>
+                <button class="buttoncss" type="button" data-path="/overview/%blogId">Zurück zur Übersicht</button>
             </nav>
-            <article data-blogid="%blogId" data-postid="%id">
-                <header>
-                    <h2>%postname</h2>
-                    <p>%formatedCreationDate</p>
-                    <p>%formatedAlterationDate</p>
+            <article class="art-det" data-blogid="%blogId" data-postid="%id">
+                <header class="detailheader">
+                    <h2 class="contenth2">%postname</h2>
+                    <p class="detp">Erstellt: </p><p class="detp">%formatedCreationDate</p>
+                    <p class="detp">Bearbeitet: </p><p class="detp">%formatedAlterationDate</p>
                 </header>
-                <section>
+                <section class="detcont">
                     %postText
                 </section>
                 <footer>
                     <nav>
-                        <button type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                        <button type="button" data-action="postDelete">Delete</button>
+                        <button class="buttoncss" type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
+                        <button class="buttoncss" type="button" data-action="postDelete">Delete</button>
                     </nav>
                 </footer>
             </article>
@@ -116,28 +129,29 @@ and open the template in the editor.
         <div id="comment-section-scheme">
             <h2>Kommentare</h2>
 
-            <article data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
-                <header>
-                    <p>%creatorName</p>
-                    <p>%creationDate</p>
+            <article class="comment" data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
+                <header class="commentheader">
+                    <p class="commentcreator">%creatorName</p>
+                    <p class="commcreatdate">%creationDate</p>
                 </header>
-                <section>
+                <section class="commentsection">
                     %commentText
+                    
                 </section>
-                <footer>
-                    <button type="button" data-action="commentDelete">Delete</button>
+                <footer class="footer">
+                    <button class="buttondelete"  type="button" data-action="commentDelete">Delete</button>
                 </footer>
             </article>
         </div>
 
         <div id="edit-scheme">
-            <h2>Post Editor</h2>
-            <form class="editor">
-                <fieldset>
-                    <ul>
-                        <li>
-                            <label for="title">Titel des Posts:</label>
-                            <input id="title" type="text" name="title" value="%postname">
+            <h2 class="detaillink">Post Editor</h2>
+            <form >
+                <fieldset class="editor">
+                    <ul class="editul">
+                        <li class="editelement">
+                            <label class="edit-title" for="title">Titel:</label>
+                            <input class="edit-title" id="title" type="text" name="title" value="%postname">
                         </li>
                         <li>
                             <label for="content">Inhalt des Posts:</label>
@@ -147,8 +161,8 @@ and open the template in the editor.
                         </li>
                         <li>
                             <nav>
-                                <button type="button" value="cancle" data-action="cancle">Abbrechen</button>
-                                <button type="button" value="save" data-action="save">Speichern</button>
+                                <button class="buttoncss" type="button" value="cancle" data-action="cancle">Abbrechen</button>
+                                <button class="buttoncss" type="button" value="save" data-action="save">Speichern</button>
                             </nav>
                         </li>
                     </ul>
@@ -157,13 +171,13 @@ and open the template in the editor.
         </div>
 
         <div id="new-Post-scheme">
-            <h2>Neuen Post anlegen</h2>
-            <form class="editor">
-                <fieldset>
-                    <ul>
-                        <li>
-                            <label for="title">Titel des Posts:</label>
-                            <input id="title" type="text" name="title" placeholder="Title des Post">
+            <h2 class="detaillink">Neuen Post anlegen</h2>
+            <form >
+                <fieldset class="editor">
+                    <ul class="editul">
+                        <li class="editelement">
+                            <label class="edit-title" for="title">Titel des Posts:</label>
+                            <input class="edit-title" id="title" type="text" name="title" placeholder="Title des Post">
                         </li>
                         <li>
                             <label for="content">Inhalt des Posts:</label>
@@ -171,8 +185,8 @@ and open the template in the editor.
                         </li>
                         <li>
                             <nav>
-                                <button type="button" value="cancle" data-action="cancle">Abbrechen</button>
-                                <button type="button" value="save" data-action="save">Speichern</button>
+                                <button class="buttoncss" type="button" value="cancle" data-action="cancle">Abbrechen</button>
+                                <button class="buttoncss" type="button" value="save" data-action="save">Speichern</button>
                             </nav>
                         </li>
                     </ul>

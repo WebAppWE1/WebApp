@@ -1,0 +1,437 @@
+:root{
+    --white: #f0f0ec;
+    --boxes: #519dd1;
+    --buttons: #aadde8;
+    
+    --smallfont: 12px;
+    --bigfont: 18px;
+     
+}
+/*sonst funktioniert hidden in flex nicht mehr :/ */
+[hidden] {
+    display: none !important;
+}
+html {
+    font-family: sans-serif;
+    background-color: white;  
+}
+
+body{
+    margin: 0px;
+    width: 100%;
+}
+
+a img{
+    width: 90%;
+    height: auto; 
+}
+
+.user{
+    margin-bottom: 0rem;
+    padding-bottom:0.5rem;
+}
+
+.buttoncss{
+        display: inline;
+        border-style: none;
+        color: white;
+        
+        background-color: var(--buttons);
+    }
+    
+.buttondelete{
+        display: inline;
+        border-style: none;
+        
+       
+        background-color: var(--buttons);
+        margin-left: auto;
+        color: white;
+        margin-bottom: 0.3rem;
+        margin-right: 0.3rem;
+
+    }
+
+#main-section{
+    margin-top: 1rem;
+}
+
+.edit-title{
+    flex-basis: 50%;
+}
+
+.editor{
+    border-style: none;
+    padding: 0;
+}
+
+.editelement{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.editul{
+    list-style-type: none;
+    padding: 0;
+    padding-left: 0.5rem;
+     padding-right: 0.5rem;
+}
+
+.header-part{
+    width:100%;
+    
+}
+
+.commentcreator{
+    font-weight: bolder;
+    margin:0rem;  
+    padding-left: 0.3rem;
+    color: white;
+}
+
+.commcreatdate{
+    margin: 0rem;
+    padding-right: 0.3rem;
+    color: white;
+}
+
+
+.newpostbutton{
+    background-color: var(--buttons);
+    width: 100%;
+    border-style: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    
+    position: sticky;
+    top: 0;
+}
+
+.art-det{
+    background-color: white;
+}
+
+.detcont{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-style: solid;
+    border-color: black;
+    
+    flex-basis: 100%;
+    
+}
+
+.detailheader{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.detp{
+    display: inline;
+    flex-basis: 50%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.overviewbutton{
+        
+        border-style: none;
+        background-color: var(--buttons);
+        color: white;
+    }
+
+.comment{
+    background-color: white;
+    margin: 0.5rem;
+    
+    
+}
+
+.commentsection{
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+}
+
+.commentheader{
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: var(--boxes);
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.contenth2{
+    flex-basis: 100%;
+    background-color: var(--boxes);
+    display: block;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+}
+
+.overviewpost{
+    display: block;
+    
+    
+    
+    border-bottom-style: solid;
+    border-color: var(--boxes);
+    
+    margin-bottom: 0.5rem;
+    padding-left: 0rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;  
+}
+
+.overP{
+    margin-left: 0.5rem;
+}
+
+.detaillink{
+    width:100%;
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--boxes);
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.overeddel{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.upper{
+    
+    background-color: var(--boxes);
+    padding-bottom: 0rem;
+    
+}
+.user-div{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        margin-left: auto;
+    }
+    .sign-in-out{
+        margin: 0.5rem;
+        background-color: var(--buttons);
+        border-style: none;
+    }
+    .auth{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    h1{
+        align-self: flex-end;
+        order: 3;
+        margin-right: auto;
+        margin-bottom: 0rem;
+    }
+    h2{
+        
+        display: block;
+        padding-top: 0.5rem;
+    }
+    .info{
+        
+        background-color: white;
+        
+        padding-left: 0.5rem;
+        padding-top: 0.05rem;
+        
+        width: 100%;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin-top: 0rem; 
+    }
+    
+    .blogov{
+        padding-left: 0rem;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        margin-bottom: 0rem;
+        
+        width: 98%;
+        margin-left: auto;
+        margin-right: auto;
+        
+        border-radius: 5px;
+        
+        font-size: 1.2rem;
+        font-weight: bold; 
+        
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    label.blogovlable{
+        padding-left: 0.5rem;
+        
+    }
+    
+    a.info-p{
+        display: inline-block;
+        background-color: var(--buttons);
+        text-decoration: none;
+        padding: 0.3rem;
+        
+        color: white;
+        margin-top: 0.3rem;
+        margin-right: 1rem;
+        margin-left: auto;
+        
+        
+    }
+    
+
+
+@media only screen and (max-width: 430px) {
+    button{
+        font-size: var(--smallfont);
+    }
+    .newpostbutton{
+        font-size:15px;
+        font-weight: bold;
+    }
+    html{
+        font-size: var(--smallfont);
+    }
+    h2{
+        font-size: 15px;
+    }
+    .info{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    
+    
+    
+    
+    .footer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    
+    
+    
+    .blogov{
+        padding-top: 0rem;
+    }
+    select {
+        display: flex;
+        flex: row;
+        flex-basis: 100%;
+        width: 98%;
+        
+        visibility: visible;
+        font-size: 1rem;
+        
+        margin-top: 0rem;
+    }
+    
+    option{
+        text-align: center;
+    }
+    .navlist {
+        visibility: hidden;
+        display: none;
+        align-self: stretch;
+        
+       
+    }
+    
+    .nav-select{
+        
+        align-self: center;
+        flex-basis: 100%;
+        width: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        font-size: 1.2rem;
+        font-weight: bold;
+       
+        margin: 0rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+         
+    }
+    
+    .info-p{
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;   
+    }
+    
+    
+}
+
+@media only screen and (min-width: 430px) {
+    /*noch nicht wirklich bearbeitet*/
+    select {
+        visibility: hidden;
+        display: none;
+    }
+    .navlist {
+        
+        visibility: visible;
+        display: flex;
+        flex-wrap: nowrap;
+        list-style-type: none;
+        
+        flex-direction: row;
+        align-items: stretch;
+        
+         text-align: center;
+         margin-left: 0rem;
+         padding-left: 0rem;
+         
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+             
+    }
+    
+    .navli{
+        border-style: outset;
+        
+        
+        padding: 0.4rem;
+        margin: 0.4rem;
+       
+        border-radius: 5px;
+        
+        flex-basis: 100%;
+        
+       
+        
+    }
+    
+    .overview{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+       
+    }
+    
+    
+}
+

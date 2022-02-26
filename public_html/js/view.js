@@ -27,6 +27,8 @@ const blogOverview = {
 
     // view for select-tag
     let select = page.querySelector("select");
+    
+    
     let option = select.lastElementChild;
     option.remove();
     for (let val of data) {
@@ -37,6 +39,7 @@ const blogOverview = {
     select.addEventListener("click", helper.handleChange);
 
     let list = page.querySelector("ul");
+    
     let listEleTemp = list.firstElementChild;
     listEleTemp.remove();
     for (let value of data) {
@@ -44,15 +47,11 @@ const blogOverview = {
       list.appendChild(listElement);
       helper.setDataInfo(list, value);
     }
+    
 
     return page;
   },
-  small(){
-      console.log("SMOL")
-  },
-  big(){
-      console.log("BEEG")
-  },
+  
 };
 
 const blogInfo = {
@@ -233,11 +232,15 @@ const helper = {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
+            
+          source.closest("ARTICLE").hidden=true;
           swal(`Der Post wurde gelöscht!`, {
             icon: "success",
           });
+          
+          
           presenter.deletePost(source.dataset.blogid, source.dataset.postid);
-          source.closest("article").hidden = true;
+          
         }
       });
     } else if (action === "commentDelete") {
