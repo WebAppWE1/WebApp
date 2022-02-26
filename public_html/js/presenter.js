@@ -181,6 +181,7 @@ const presenter = (function () {
     save(blogId, postId) {
       console.log(`Aufruf von presenter.save`);
 
+      presenter.showBlogOverview();
       if (postId === undefined) {
         router.navigateToPage(`/overview/${blogId}`);
       } else {
@@ -219,6 +220,7 @@ const presenter = (function () {
         } else {
           this.showPostOverview(blogId);
         }
+        presenter.showBlogOverview();
       });
     }
   };

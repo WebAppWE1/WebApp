@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="de">
 
 <head>
     <title>Blogger</title>
@@ -56,7 +56,7 @@ and open the template in the editor.
         <nav id="blog-overview-scheme">
             <div class="nav-select">
                 <label for="blogs">Wähle einen Blog aus:</label>
-                <select name="blogs" id="blogs-select">
+                <select id="blogs" name="blogs" id="blogs-select">
                     <option value="" selected="selected">
                         ---------------------
                     </option>
@@ -68,7 +68,7 @@ and open the template in the editor.
             <ul class="nav-list">
                 <li data-path="/overview/%id">
                     %blogname (%postCount)
-                </li> 
+                </li>
             </ul>
         </nav>
 
@@ -151,8 +151,8 @@ and open the template in the editor.
                 <fieldset>
                     <ul>
                         <li class="input">
-                            <label for="title">Titel des Posts:</label>
-                            <input id="title" class="editable-content" type="text" name="title" value="%postname">
+                            <label for="editTitle">Titel des Posts:</label>
+                            <input id="editTitle" class="editable-content" type="text" name="title" value="%postname">
                         </li>
                         <li class="input">
                             <label for="content">Inhalt des Posts:</label>
@@ -177,8 +177,8 @@ and open the template in the editor.
                 <fieldset>
                     <ul>
                         <li class="input">
-                            <label for="title">Titel des Posts:</label>
-                            <input id="title" class="editable-content" type="text" name="title"
+                            <label for="newPostTitle">Titel des Posts:</label>
+                            <input id="newPostTitle" class="editable-content" type="text" name="title"
                                 placeholder="Title des Post">
                         </li>
                         <li class="input">
