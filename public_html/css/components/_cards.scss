@@ -1,31 +1,174 @@
 @import "../helpers/variables";
+@import "../helpers/mixins";
+
+// overall-background
+body {
+  background-color: $background;
+}
 
 // Post-Overview cards
 .post-article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 1rem;
-    background-color: $rosa;
-    border-radius: 0.75rem;
-    header {
-        margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  border: 5px solid $secondary;
+  border-radius: 0.75rem;
+
+  .card-header {
+    display: block;
+    padding: 0.5rem 1rem 0.75rem 1rem;
+    background-color: $secondary;
+    text-decoration: none;
+    color: $fonts;
+
+    @include breakpoint("tablet") {
+      font-size: 1.25rem;
     }
-    footer {
-        align-self: flex-end;
-        margin: 0 1rem;
-        button {
-            padding: 0.25rem 0.5rem;
-            background-color: $eggshell;
-            border-color: $eggshell;
-            border-radius: 0.5rem;
-        }
+  }
+
+  .card-information {
+    margin: 0.75rem 1rem;
+    font-size: 0.85rem;
+
+    @include breakpoint("tablet") {
+      font-size: 1rem;
     }
+  }
+
+  footer {
+    align-self: flex-end;
+    margin: 0.5rem 1rem;
+
+    button {
+      margin: 0 0.25rem;
+    }
+  }
 }
 
 // Post-Detail card + comments
 .post-detail {
-    .comments {
-        
+  .detail-article {
+    margin: 1rem auto;
+    border: 5px solid $secondary;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .card-header {
+      padding: 0.5rem 1rem 0.75rem 1rem;
+      border-color: $secondary;
+      background-color: $secondary;
+      font-size: 1.25rem;
     }
+
+    .card-information {
+      padding: 0.5rem 1rem 0.75rem 1rem;
+    }
+
+    section {
+      margin: 0.5rem 2.5rem;
+    }
+
+    footer {
+      align-self: flex-end;
+      margin: 0.5rem;
+
+      button {
+        margin: 0 0.25rem;
+      }
+    }
+  }
+  .comments {
+    border: 5px solid $secondary;
+    border-radius: 0.5rem;
+    width: 98%;
+
+    .section-header {
+      font-size: 1.25rem;
+      padding: 0.5rem 0 0.5rem 1rem;
+      background-color: $secondary;
+      width: 98%;
+    }
+
+    .comment-article {
+      display: flex;
+      flex-direction: column;
+      border: 5px solid $secondary;
+      border-radius: 0.5rem;
+      padding: 0.75rem 1.25rem;
+
+      .comment-content {
+        margin: 0.5rem 1rem;
+      }
+
+      .comment-information {
+        margin-right: 1rem;
+        font-size: 0.75rem;
+      }
+
+      footer {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+// editor
+.overall-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .editor {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid $secondary;
+    border-radius: 0.5rem;
+
+    @include breakpoint("tablet", "max") {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      padding: 0.5rem 1rem 0.75rem 1rem;
+      background-color: $secondary;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      margin: 0.75rem 1rem;
+
+      .input {
+        display: flex;
+        flex-direction: column;
+
+        & :nth-child(2) {
+          margin: 0.5rem 1rem 0.5rem 2rem;
+          border: 2px solid #ebe9ed;
+          padding: 1px 2px;
+        }
+
+        .title-input {
+          max-width: 12rem;
+        }
+
+        .editable-content {
+          overflow: auto;
+          height: 12rem;
+
+          @include breakpoint("tablet") {
+            width: 20rem;
+          }
+        }
+      }
+
+      .buttons {
+        align-self: flex-end;
+      }
+    }
+  }
 }

@@ -1,0 +1,22 @@
+// google Font download
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@import "./variables";
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: $fonts;
+
+  .italic {
+    font-style: italic;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .underline {
+    text-decoration: underline;
+  }
+}

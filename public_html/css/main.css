@@ -16,6 +16,24 @@ section, summary, time, mark, audio, video {
   font: inherit;
 }
 
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #33272a;
+}
+
+html .italic {
+  font-style: italic;
+}
+
+html .bold {
+  font-weight: bold;
+}
+
+html .underline {
+  text-decoration: underline;
+}
+
 .user-information {
   width: 100%;
   height: 13rem;
@@ -143,7 +161,13 @@ section, summary, time, mark, audio, video {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+@media (max-width: 480px) {
+  .main-body #blog-navbar #blog-overview {
+    width: 100%;
+  }
 }
 
 .main-body #blog-navbar .nav-select {
@@ -193,7 +217,6 @@ section, summary, time, mark, audio, video {
   }
   .main-body #blog-navbar #blog-detail-info {
     width: 50%;
-    text-align: center;
   }
   .main-body #blog-navbar #blog-overview {
     width: 50%;
@@ -210,6 +233,7 @@ section, summary, time, mark, audio, video {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    height: 30rem;
   }
   .main-body #blog-navbar #blog-detail-info {
     width: 100%;
@@ -220,6 +244,16 @@ section, summary, time, mark, audio, video {
     width: 100%;
     height: 67%;
     margin: 1rem auto;
+  }
+}
+
+@media (max-width: 750px) {
+  .main-body #blog-navbar {
+    border-bottom: 2px solid #33272a;
+    background-color: #fffffe;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
   }
 }
 
@@ -240,18 +274,14 @@ section, summary, time, mark, audio, video {
   }
 }
 
+@media (min-width: 750px) {
+  #main-section {
+    overflow: auto;
+  }
+}
+
 .post-overview {
   width: 100%;
-}
-
-.post-overview #new-post-button {
-  margin: 0.75rem 0.5rem;
-}
-
-@media (min-width: 300px) {
-  .post-overview #new-post-button {
-    margin: 0.75rem 1rem;
-  }
 }
 
 .post-overview .article-container {
@@ -267,7 +297,12 @@ section, summary, time, mark, audio, video {
 
 .post-overview .article-container .post-article {
   width: 15rem;
-  height: 10rem;
+}
+
+@media (min-width: 480px) {
+  .post-overview .article-container .post-article {
+    width: 20rem;
+  }
 }
 
 .post-detail {
@@ -292,13 +327,17 @@ section, summary, time, mark, audio, video {
   }
 }
 
-.post-detail .go-back-btn {
-  margin: 0.75rem 1rem;
+.post-detail nav {
   -ms-flex-item-align: start;
       align-self: flex-start;
 }
 
-.post-detail .detail-article {
+.post-detail nav .go-back-btn {
+  margin: 0.75rem 1rem;
+  width: 12rem;
+}
+
+.post-detail nav .detail-article {
   margin: 1.5rem 1rem;
 }
 
@@ -322,56 +361,11 @@ section, summary, time, mark, audio, video {
 }
 
 .comments .comments-container article {
-  margin: 2rem;
+  margin: 1rem;
 }
 
-.editor {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0 5%;
-}
-
-@media (min-width: 300px) {
-  .editor {
-    margin: 0 auto;
-    width: 60%;
-  }
-}
-
-.editor form {
-  margin-left: 1rem;
-}
-
-@media (min-width: 300px) {
-  .editor form {
-    margin: 0;
-    padding-left: 1.5rem;
-  }
-}
-
-.editor form ul {
-  list-style-type: none;
-}
-
-.editor form ul .input .editable-content {
-  margin: 0.5rem 1.5rem;
-}
-
-.editor form ul .input label {
-  display: block;
-}
-
-.editor form ul .buttons nav {
-  margin: 1rem 0;
-}
-
-.editor form ul .buttons nav button {
-  margin: 0 0.5rem;
+body {
+  background-color: #faeee7;
 }
 
 .post-article {
@@ -382,34 +376,322 @@ section, summary, time, mark, audio, video {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   margin: 1rem;
-  background-color: #FFE2E2;
+  border: 5px solid #ffc6c7;
   border-radius: 0.75rem;
 }
 
-.post-article header {
-  margin: 0 1rem;
+.post-article .card-header {
+  display: block;
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  background-color: #ffc6c7;
+  text-decoration: none;
+  color: #33272a;
+}
+
+@media (min-width: 480px) {
+  .post-article .card-header {
+    font-size: 1.25rem;
+  }
+}
+
+.post-article .card-information {
+  margin: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 480px) {
+  .post-article .card-information {
+    font-size: 1rem;
+  }
 }
 
 .post-article footer {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
 }
 
 .post-article footer button {
-  padding: 0.25rem 0.5rem;
-  background-color: #F6F6F6;
-  border-color: #F6F6F6;
+  margin: 0 0.25rem;
+}
+
+.post-detail .detail-article {
+  margin: 1rem auto;
+  border: 5px solid #ffc6c7;
+  border-radius: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.post-detail .detail-article .card-header {
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  border-color: #ffc6c7;
+  background-color: #ffc6c7;
+  font-size: 1.25rem;
+}
+
+.post-detail .detail-article .card-information {
+  padding: 0.5rem 1rem 0.75rem 1rem;
+}
+
+.post-detail .detail-article section {
+  margin: 0.5rem 2.5rem;
+}
+
+.post-detail .detail-article footer {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0.5rem;
+}
+
+.post-detail .detail-article footer button {
+  margin: 0 0.25rem;
+}
+
+.post-detail .comments {
+  border: 5px solid #ffc6c7;
+  border-radius: 0.5rem;
+  width: 98%;
+}
+
+.post-detail .comments .section-header {
+  font-size: 1.25rem;
+  padding: 0.5rem 0 0.5rem 1rem;
+  background-color: #ffc6c7;
+  width: 98%;
+}
+
+.post-detail .comments .comment-article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 5px solid #ffc6c7;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.post-detail .comments .comment-article .comment-content {
+  margin: 0.5rem 1rem;
+}
+
+.post-detail .comments .comment-article .comment-information {
+  margin-right: 1rem;
+  font-size: 0.75rem;
+}
+
+.post-detail .comments .comment-article footer {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: 0.5rem;
+}
+
+.overall-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overall-container .editor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 5px solid #ffc6c7;
   border-radius: 0.5rem;
 }
 
-html {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
+@media (max-width: 480px) {
+  .overall-container .editor {
+    width: 100%;
+  }
 }
 
+.overall-container .editor h2 {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  background-color: #ffc6c7;
+}
+
+.overall-container .editor .form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style-type: none;
+  margin: 0.75rem 1rem;
+}
+
+.overall-container .editor .form-container .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.overall-container .editor .form-container .input :nth-child(2) {
+  margin: 0.5rem 1rem 0.5rem 2rem;
+  border: 2px solid #ebe9ed;
+  padding: 1px 2px;
+}
+
+.overall-container .editor .form-container .input .title-input {
+  max-width: 12rem;
+}
+
+.overall-container .editor .form-container .input .editable-content {
+  overflow: auto;
+  height: 12rem;
+}
+
+@media (min-width: 480px) {
+  .overall-container .editor .form-container .input .editable-content {
+    width: 20rem;
+  }
+}
+
+.overall-container .editor .form-container .buttons {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.Action-Button {
+  padding: 0.25rem 0.5rem;
+  background-color: #ff8ba7;
+  border-color: #ff8ba7;
+  border-radius: 0.5rem;
+}
+
+#new-post-nav {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  #new-post-nav .new-Post-btn {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+}
+
+@media (min-width: 480px) {
+  #new-post-nav .new-Post-btn {
+    margin: 0.75rem 1rem;
+    width: 9rem;
+  }
+}
+
+.extern-link-btn {
+  border: 1px solid #ff8ba7;
+  text-decoration: none;
+  color: #33272a;
+}
+
+#blog-detail-info {
+  width: 100%;
+}
+
+#blog-detail-info .blog-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 20rem;
+}
+
+@media (min-width: 480px) {
+  #blog-detail-info .blog-info {
+    max-width: 18.75rem;
+  }
+}
+
+#blog-detail-info .blog-info h2 {
+  font-size: 1.25rem;
+}
+
+#blog-detail-info .blog-info .extern-link-btn {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.nav-select {
+  width: 100%;
+  position: relative;
+}
+
+.nav-select::before {
+  font-family: 'FontAwesome';
+  content: "\f078";
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  color: #33272a;
+  pointer-events: none;
+}
+
+.nav-select select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2px solid #33272a;
+  width: 100%;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  color: #33272a;
+  cursor: pointer;
+}
+
+.nav-select select:focus {
+  border: 1px solid #33272a;
+}
+
+.nav-select select option {
+  font-size: 1rem;
+}
+
+.nav-list li {
+  background-color: #ffc6c7;
+  border: 1px solid #ffc6c7;
+  border-radius: 0.5rem;
+  width: 80%;
+  margin: 0.25rem auto;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.nav-list li:hover {
+  background-color: #ffadae;
+  border-color: #ffadae;
+}
 /*# sourceMappingURL=main.css.map */

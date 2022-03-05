@@ -1,0 +1,30 @@
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
+.Action-Button {
+  padding: 0.25rem 0.5rem;
+  background-color: $buttons;
+  border-color: $buttons;
+  border-radius: 0.5rem;
+}
+
+#new-post-nav {
+  width: 100%;
+  .new-Post-btn {
+    @include breakpoint("tablet", "max") {
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+   
+    @include breakpoint("tablet") {
+      margin: 0.75rem 1rem;
+      width: 9rem;
+    }
+  }
+}
+
+.extern-link-btn {
+    border: 1px solid $buttons;
+    text-decoration: none;
+    color: $fonts;
+}

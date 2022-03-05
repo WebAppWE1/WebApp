@@ -10,10 +10,9 @@ const presenter = (function () {
   let init = false;
   let owner = null;
   let detail = false;
-  let editor = false;
   
   // Initialisiert die allgemeinen Teile der Seite
-  function initPage() {
+  function initPage(blogId) {
     console.log("Presenter: Aufruf von initPage()");
 
     // Nutzer abfragen und Anzeigenamen als owner setzen
@@ -25,6 +24,14 @@ const presenter = (function () {
     });
 
     presenter.showBlogOverview();
+
+    if (blogId) {
+      model.getBlog(blogId, blog => {
+        console.log("BlogInfo wird aufgerufen...");
+        let element = blogInfo.render(blog);
+        replace("blog-detail-info", element);
+      });
+    }
 
     let blognavbar = document.getElementById("blog-navbar");
     blognavbar.addEventListener("click", handleClicks);
@@ -143,7 +150,7 @@ const presenter = (function () {
     showPostDetail(blogId, postId) {
       console.log(`Aufruf von presenter.showPostDetail von Post ${postId}`);
 
-      if (!init) initPage();
+      if (!init) initPage(blogId);
 
       // model-methods to render the content
       model.getPost(blogId, postId, (post) => {
@@ -159,7 +166,7 @@ const presenter = (function () {
     showEdit(blogId, postId) {
       console.log(`Aufruf von presenter.showEdit von Post ${postId} von Blog ${blogId}`)
 
-      if(!init) initPage();
+      if(!init) initPage(blogId);
 
       model.getPost(blogId, postId, (post) => {
         let element = postEdit.render(post);
@@ -170,7 +177,7 @@ const presenter = (function () {
     showNewPost(blogId) {
       console.log(`Aufruf von presenter.showNewPost von Blog ${blogId}`);
 
-      if(!init) initPage();
+      if(!init) initPage(blogId);
 
       model.getBlog(blogId, (blog) => {
         let element = newPost.render(blog);

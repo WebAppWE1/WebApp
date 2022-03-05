@@ -1,22 +1,14 @@
-// google Font download
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 // import of helper files
 @import "./helpers/resets";
 @import "./helpers/variables";
 @import "./helpers/mixins";
 @import "./helpers/placeholders";
+@import "./helpers/fonts";
 // import of Layout files
 @import "./layouts/header";
 @import "./layouts/navbar";
 @import "./layouts/main-section";
 // import of component styling files
 @import "./components/cards";
-
-html {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-}
-
-h1 {
-  color: #2e4a99;
-}
+@import "./components/buttons";
+@import "./components/navbar";
