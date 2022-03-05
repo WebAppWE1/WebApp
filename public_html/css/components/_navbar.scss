@@ -4,6 +4,7 @@
 // blog-info section
 #blog-detail-info {
   width: 100%;
+
   .blog-info {
     display: flex;
     flex-direction: column;
@@ -14,9 +15,11 @@
     @include breakpoint("tablet") {
         max-width: 18.75rem;
     }
+
     h2 {
       font-size: 1.25rem;
     }
+
     .extern-link-btn {
         align-self: flex-end;
         font-size: 0.75rem;
@@ -29,6 +32,7 @@
 .nav-select {
     width: 100%;
     position: relative;
+
     &::before {
         font-family: 'FontAwesome';
         content: "\f078";
@@ -36,20 +40,23 @@
         position: absolute;
         right: 1rem;
         top: 0.5rem;
-        color: $fonts;
+        color: $black;
         pointer-events: none;
     }
+
     select {
         appearance: none;
-        border: 2px solid $fonts;
+        border: 2px solid $black;
         width: 100%;
         height: 2.5rem;
         padding-left: 0.5rem;
-        color: $fonts;
+        color: $black;
         cursor: pointer;
+
         &:focus {
-            border: 1px solid $fonts;
+            border: 1px solid $black;
         }
+
         option {
             font-size: 1rem;
         }
@@ -58,9 +65,10 @@
 
 // nav-list section
 .nav-list {
+
     li {
-        background-color: $secondary;
-        border: 1px solid $secondary;
+        background-color: $marine;
+        border: 1px solid $marine;
         border-radius: 0.5rem;
         width: 80%;
         margin: 0.25rem auto;
@@ -68,8 +76,8 @@
         cursor: pointer;
 
         &:hover {
-            background-color: darken($color: $secondary, $amount: 5);
-            border-color: darken($color: $secondary, $amount: 5);
+            background-color: darken($color: $marine, $amount: 15);
+            border-color: darken($color: $marine, $amount: 15);
         }
     }
 }

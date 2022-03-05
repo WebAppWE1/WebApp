@@ -145,8 +145,8 @@ const postEdit = {
               data.blogId,
               data.id,
               form.title.value,
-              page.querySelector("div").innerHTML,
-              (result) => {
+              page.querySelector(".post-content").innerHTML,
+              () => {
                 presenter[action](data.blogId, data.id);
               }
             );

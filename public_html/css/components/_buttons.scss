@@ -3,13 +3,14 @@
 
 .Action-Button {
   padding: 0.25rem 0.5rem;
-  background-color: $buttons;
-  border-color: $buttons;
+  background-color: $forest;
+  border-color: $forest;
   border-radius: 0.5rem;
 }
 
 #new-post-nav {
   width: 100%;
+  
   .new-Post-btn {
     @include breakpoint("tablet", "max") {
         width: 100%;
@@ -24,7 +25,7 @@
 }
 
 .extern-link-btn {
-    border: 1px solid $buttons;
+    border: 1px solid $forest;
     text-decoration: none;
-    color: $fonts;
+    color: $black;
 }

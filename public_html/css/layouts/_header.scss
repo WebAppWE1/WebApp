@@ -4,17 +4,23 @@
     height: 13rem;
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $black;
   
     @include breakpoint("tablet") {
       flex-direction: row;
       justify-content: space-between;
       height: 6rem;
     }
+
+
+    @include breakpoint("desktop") {
+      background-color: $sleekyGrey;
+    }
+
     .title-header {
       font-size: 3rem;
       font-weight: bold;
-      text-shadow: 2px 2px 4px lightgrey;
+      text-shadow: 2px 2px 4px $sleekyGrey;
       margin: auto 1.5rem;
       text-align: center;
   
@@ -22,10 +28,12 @@
         font-size: 3rem;
       }
     }
+
     .login-information {
       display: flex;
       flex-direction: column;
       margin: auto 1.5rem;
+
       .info-block {
         display: flex;
         flex-direction: row;
@@ -33,20 +41,18 @@
         @include breakpoint("mobile") {
           flex-direction: column;
         }
+
         #auth-status {
           display: none;
   
           @include breakpoint('mobile') {
             display: block;
             font-size: 1rem;
-            font-style: italic;
             font-size: 0.75rem;
           }
         }
-        .user {
-          font-weight: bold;
-        }
       }
+      
       button {
         @include breakpoint("tablet") {
           justify-content: flex-end;

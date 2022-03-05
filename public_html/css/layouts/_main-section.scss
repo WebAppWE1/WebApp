@@ -14,13 +14,16 @@
 // postoverview-section
 .post-overview {
     width: 100%;
+
     .article-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       margin: 1.5rem 0;
+
       .post-article {
         width: 15rem;
+
         @include breakpoint("tablet") {
           width: 20rem;
         }
@@ -40,26 +43,32 @@
       overflow-x: hidden;
       height: 100%;
     }
+
     nav {
       align-self: flex-start;
+
       .go-back-btn {
         margin: 0.75rem 1rem;
         width: 12rem;
       }
+
       .detail-article {
         margin: 1.5rem 1rem;
       }
     }
   }
+
   .comments {
     margin: 1.5rem 1rem;
     width: 100%;
+
     .comments-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       align-items: center;
       margin: 1.5rem 0;
+      
       article {
         margin: 1rem;
       }
