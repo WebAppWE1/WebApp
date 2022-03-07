@@ -20,6 +20,10 @@ html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #000000;
+  height: 100%;
+}
+body {
+    height: 100%;
 }
 
 html .italic {
@@ -139,6 +143,7 @@ html .underline {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 750px) {
@@ -147,7 +152,7 @@ html .underline {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    height: 30rem;
+    
   }
 }
 
@@ -163,13 +168,10 @@ html .underline {
       -ms-flex-align: center;
           align-items: center;
   padding: 1rem 0;
+  
 }
 
-@media (max-width: 480px) {
-  .main-body #blog-navbar #blog-overview {
-    width: 100%;
-  }
-}
+
 
 .main-body #blog-navbar .nav-select {
   margin-bottom: 1rem;
@@ -235,6 +237,8 @@ html .underline {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 30rem;
+    border-right-style: solid;
+    border-width: 1.2px;
   }
   .main-body #blog-navbar #blog-detail-info {
     width: 100%;
@@ -261,12 +265,13 @@ html .underline {
 @media (min-width: 750px) {
   .main-body #main-section {
     width: 70%;
-    height: 30rem;
+    
   }
 }
 
 #main-section {
   margin: 1rem;
+  height: 100%;
 }
 
 @media (min-width: 480px) {
@@ -288,11 +293,12 @@ html .underline {
 .post-overview .article-container {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  width: 100%;
+      
   margin: 1.5rem 0;
 }
 
@@ -351,10 +357,11 @@ html .underline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+      justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -377,7 +384,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 1rem;
+  margin-top: 1rem;
   border: 5px solid #f4a6ae;
   border-radius: 0.75rem;
 }
@@ -428,6 +435,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 98%;
 }
 
 .post-detail .detail-article .card-header {
@@ -436,6 +444,19 @@ body {
   background-color: #f4a6ae;
   font-size: 1.25rem;
 }
+
+.card-header {
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  border-color: #f4a6ae;
+  background-color: #f4a6ae;
+  font-size: 1.25rem;
+}
+
+.editor{
+    width: 96%;
+}
+
+
 
 .post-detail .detail-article .card-information {
   padding: 0.5rem 1rem 0.75rem 1rem;
@@ -463,7 +484,7 @@ body {
 
 .post-detail .comments .section-header {
   font-size: 1.25rem;
-  padding: 0.5rem 0 0.5rem 1rem;
+  padding: 0.5rem 0.3rem 0.5rem 1rem;
   background-color: #f4a6ae;
   width: 98%;
 }
@@ -476,9 +497,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 5px solid #f4a6ae;
+  border: 2px solid #f4a6ae;
   border-radius: 0.5rem;
   padding: 0.75rem 1.25rem;
+  width: 90%;
 }
 
 .post-detail .comments .comment-article .comment-content {
@@ -555,17 +577,21 @@ body {
 }
 
 .overall-container .editor .form-container .input .title-input {
-  max-width: 12rem;
+  width: 96%;
+  height: 2rem;
 }
 
 .overall-container .editor .form-container .input .editable-content {
+    display: inline-block;
   overflow: auto;
   height: 12rem;
+  
 }
 
 @media (min-width: 480px) {
   .overall-container .editor .form-container .input .editable-content {
-    width: 20rem;
+    width: 96%;
+    
   }
 }
 
@@ -695,4 +721,32 @@ body {
   background-color: #ec6171;
   border-color: #ec6171;
 }
+
+@media (max-width: 550px) {
+  .main-body #blog-navbar #blog-overview {
+    width: 100%;
+  }
+  .post-overview .article-container {
+      grid: auto / 100%;
+    justify-items: center;
+  }
+  .post-overview .article-container .post-article{
+      width: 100%;
+  }
+}
+@media (min-width: 550px) {
+    .post-overview .article-container {
+      grid: auto / auto auto ;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
+        gap: 2rem;
+  }
+  
+  .post-overview .article-container .post-article{
+      width: 96%;
+  }
+}
+
+
+
 /*# sourceMappingURL=main.css.map */
