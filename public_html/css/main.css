@@ -16,11 +16,34 @@ section, summary, time, mark, audio, video {
   font: inherit;
 }
 
+:root{
+    --basecolor: #8FAD15;
+    --buttoncolor: #CBE660;
+    --additionalcolor: #e9e9d9;
+    --textshadow: #867e7e;
+    
+    --headerbig: 18px;
+    --headermedium: 20px;
+    --headersmall: 16px;
+    
+    --textbig: 14px;
+    --textmedium: 12px;
+    --textsmall: 8px;
+    
+    --buttonbig: 12px;
+    
+    --h1big: 40px;
+}
+
+
 html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #000000;
   height: 100%;
+}
+button{
+    font-family: "Poppins", sans-serif;
 }
 body {
     height: 100%;
@@ -66,21 +89,21 @@ html .underline {
 
 @media (min-width: 750px) {
   .user-information {
-    background-color: #cacac8;
+    background-color: var(--additionalcolor);
   }
 }
 
 .user-information .title-header {
-  font-size: 3rem;
+  
   font-weight: bold;
-  text-shadow: 2px 2px 4px #cacac8;
+  text-shadow: 2px 2px 4px var(--textshadow);
   margin: auto 1.5rem;
   text-align: center;
 }
 
 @media (min-width: 480px) {
   .user-information .title-header {
-    font-size: 3rem;
+    
   }
 }
 
@@ -121,8 +144,7 @@ html .underline {
 @media (min-width: 300px) {
   .user-information .login-information .info-block #auth-status {
     display: block;
-    font-size: 1rem;
-    font-size: 0.75rem;
+    
   }
 }
 
@@ -255,7 +277,7 @@ html .underline {
 @media (max-width: 750px) {
   .main-body #blog-navbar {
     border-bottom: 2px solid #000000;
-    background-color: #cacac8;
+    background-color: var(--additionalcolor);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -385,32 +407,32 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 1rem;
-  border: 5px solid #f4a6ae;
+  border: 5px solid var(--basecolor);
   border-radius: 0.75rem;
 }
 
 .post-article .card-header {
   display: block;
   padding: 0.5rem 1rem 0.75rem 1rem;
-  background-color: #f4a6ae;
+  background-color: var(--basecolor);
   text-decoration: none;
   color: #000000;
 }
 
 @media (min-width: 480px) {
   .post-article .card-header {
-    font-size: 1.25rem;
+    
   }
 }
 
 .post-article .card-information {
   margin: 0.75rem 1rem;
-  font-size: 0.85rem;
+  
 }
 
 @media (min-width: 480px) {
   .post-article .card-information {
-    font-size: 1rem;
+    
   }
 }
 
@@ -426,7 +448,7 @@ body {
 
 .post-detail .detail-article {
   margin: 1rem auto;
-  border: 5px solid #f4a6ae;
+  border: 5px solid var(--basecolor);
   border-radius: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -440,16 +462,16 @@ body {
 
 .post-detail .detail-article .card-header {
   padding: 0.5rem 1rem 0.75rem 1rem;
-  border-color: #f4a6ae;
-  background-color: #f4a6ae;
-  font-size: 1.25rem;
+  border-color: var(--basecolor);
+  background-color: var(--basecolor);
+  
 }
 
 .card-header {
   padding: 0.5rem 1rem 0.75rem 1rem;
-  border-color: #f4a6ae;
-  background-color: #f4a6ae;
-  font-size: 1.25rem;
+  border-color: var(--basecolor);
+  background-color: var(--basecolor);
+  
 }
 
 .editor{
@@ -477,15 +499,15 @@ body {
 }
 
 .post-detail .comments {
-  border: 5px solid #f4a6ae;
+  border: 5px solid var(--basecolor);
   border-radius: 0.5rem;
   width: 98%;
 }
 
 .post-detail .comments .section-header {
-  font-size: 1.25rem;
+  
   padding: 0.5rem 0.3rem 0.5rem 1rem;
-  background-color: #f4a6ae;
+  background-color: var(--basecolor);
   width: 98%;
 }
 
@@ -497,7 +519,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 2px solid #f4a6ae;
+  border: 2px solid var(--basecolor);
   border-radius: 0.5rem;
   padding: 0.75rem 1.25rem;
   width: 90%;
@@ -509,7 +531,7 @@ body {
 
 .post-detail .comments .comment-article .comment-information {
   margin-right: 1rem;
-  font-size: 0.75rem;
+  
 }
 
 .post-detail .comments .comment-article footer {
@@ -538,7 +560,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 5px solid #f4a6ae;
+  border: 5px solid var(--basecolor);
   border-radius: 0.5rem;
 }
 
@@ -579,6 +601,7 @@ body {
 .overall-container .editor .form-container .input .title-input {
   width: 96%;
   height: 2rem;
+  
 }
 
 .overall-container .editor .form-container .input .editable-content {
@@ -596,9 +619,9 @@ body {
 }
 
 .overall-container .editor .form-container h2 {
-  font-size: 1.25rem;
+  
   padding: 0.5rem 1rem 0.75rem 1rem;
-  background-color: #f4a6ae;
+  background-color: var(--basecolor);
 }
 
 .overall-container .editor .form-container .buttons {
@@ -608,8 +631,8 @@ body {
 
 .Action-Button {
   padding: 0.25rem 0.5rem;
-  background-color: #f09d51;
-  border-color: #f09d51;
+  background-color: var(--buttoncolor);
+  border-color: var(--buttoncolor);
   border-radius: 0.5rem;
 }
 
@@ -632,7 +655,7 @@ body {
 }
 
 .extern-link-btn {
-  border: 1px solid #f09d51;
+  border: 1px solid var(--buttoncolor);
   text-decoration: none;
   color: #000000;
 }
@@ -661,13 +684,13 @@ body {
 }
 
 #blog-detail-info .blog-info h2 {
-  font-size: 1.25rem;
+  
 }
 
 #blog-detail-info .blog-info .extern-link-btn {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  font-size: 0.75rem;
+  
   margin-top: 0.5rem;
 }
 
@@ -679,7 +702,7 @@ body {
 .nav-select::before {
   font-family: 'FontAwesome';
   content: "\f078";
-  font-size: 1rem;
+  
   position: absolute;
   right: 1rem;
   top: 0.5rem;
@@ -704,12 +727,12 @@ body {
 }
 
 .nav-select select option {
-  font-size: 1rem;
+  
 }
 
 .nav-list li {
-  background-color: #f4a5ae;
-  border: 1px solid #f4a5ae;
+  background-color: var(--basecolor);
+  border: 1px solid var(--basecolor);
   border-radius: 0.5rem;
   width: 80%;
   margin: 0.25rem auto;
@@ -723,6 +746,9 @@ body {
 }
 
 @media (max-width: 550px) {
+  html{
+        font-size: var(--textmedium);
+  }
   .main-body #blog-navbar #blog-overview {
     width: 100%;
   }
@@ -735,6 +761,27 @@ body {
   }
 }
 @media (min-width: 550px) {
+    html{
+        font-size: var(--textbig);
+  }
+  .title-header{
+      font-size: var(--h1big);
+  }
+  .post-article h2{
+      font-size: var(--headerbig);
+  }
+  
+  .nav-list li{
+      font-size: var(--textbig);
+  }
+  
+  .extern-link-btn{
+      font-size: var(--buttonbig);
+  }
+  
+  button{
+      font-size: var(--buttonbig);
+  }
     .post-overview .article-container {
       grid: auto / auto auto ;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -745,6 +792,8 @@ body {
   .post-overview .article-container .post-article{
       width: 96%;
   }
+  
+  
 }
 
 
