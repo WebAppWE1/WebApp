@@ -28,11 +28,16 @@ section, summary, time, mark, audio, video {
     
     --textbig: 14px;
     --textmedium: 12px;
-    --textsmall: 8px;
+    --textsmall: 10px;
     
     --buttonbig: 12px;
+    --buttonsmall: 10px;
     
     --h1big: 40px;
+    
+    --borders: 2px solid #000000;
+    --bordersmall: 2px;
+    --borderbig: 5px;
 }
 
 
@@ -40,8 +45,8 @@ html {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #000000;
-  height: 100%;
 }
+
 button{
     font-family: "Poppins", sans-serif;
 }
@@ -63,7 +68,7 @@ html .underline {
 
 .user-information {
   width: 100%;
-  height: 13rem;
+  
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,7 +76,7 @@ html .underline {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-bottom: 2px solid #000000;
+  border-bottom: var(--borders);
 }
 
 @media (min-width: 480px) {
@@ -128,7 +133,7 @@ html .underline {
           flex-direction: row;
 }
 
-@media (min-width: 300px) {
+@media only screen and  (min-width: 300px) {
   .user-information .login-information .info-block {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -141,14 +146,14 @@ html .underline {
   display: none;
 }
 
-@media (min-width: 300px) {
+@media only screen and (min-width: 300px) {
   .user-information .login-information .info-block #auth-status {
     display: block;
     
   }
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .user-information .login-information button {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -168,7 +173,7 @@ html .underline {
   height: 100%;
 }
 
-@media (min-width: 750px) {
+@media only screen and (min-width: 750px) {
   .main-body {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -189,7 +194,7 @@ html .underline {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1rem 0;
+ 
   
 }
 
@@ -199,7 +204,7 @@ html .underline {
   margin-bottom: 1rem;
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .main-body #blog-navbar .nav-select {
     display: none;
   }
@@ -217,7 +222,7 @@ html .underline {
   display: none;
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .main-body #blog-navbar .nav-list {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -231,9 +236,6 @@ html .underline {
             align-items: center;
     list-style-type: none;
   }
-}
-
-@media (min-width: 480px) {
   .main-body #blog-navbar {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -251,7 +253,9 @@ html .underline {
   }
 }
 
-@media (min-width: 750px) {
+
+
+@media only screen and (min-width: 750px) {
   .main-body #blog-navbar {
     width: 30%;
     -webkit-box-orient: vertical;
@@ -259,8 +263,8 @@ html .underline {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 30rem;
-    border-right-style: solid;
-    border-width: 1.2px;
+    
+    border-right: var(--borders);
   }
   .main-body #blog-navbar #blog-detail-info {
     width: 100%;
@@ -272,9 +276,17 @@ html .underline {
     height: 67%;
     margin: 1rem auto;
   }
+  .main-body #main-section {
+    width: 70%;
+    height: 100%;
+    
+  }
+  #main-section {
+    overflow: auto;
+  }
 }
 
-@media (max-width: 750px) {
+@media only screen and (max-width: 750px) {
   .main-body #blog-navbar {
     border-bottom: 2px solid #000000;
     background-color: var(--additionalcolor);
@@ -285,10 +297,7 @@ html .underline {
 }
 
 @media (min-width: 750px) {
-  .main-body #main-section {
-    width: 70%;
-    
-  }
+  
 }
 
 #main-section {
@@ -296,17 +305,13 @@ html .underline {
   height: 100%;
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   #main-section {
     margin: 2rem;
   }
 }
 
-@media (min-width: 750px) {
-  #main-section {
-    overflow: auto;
-  }
-}
+
 
 .post-overview {
   width: 100%;
@@ -328,7 +333,7 @@ html .underline {
   width: 15rem;
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .post-overview .article-container .post-article {
     width: 20rem;
   }
@@ -336,11 +341,10 @@ html .underline {
 
 .post-detail {
   width: 100%;
-  display: -webkit-box;
+  height: 100%;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+  
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-align: center;
@@ -348,11 +352,11 @@ html .underline {
           align-items: center;
 }
 
-@media (min-width: 750px) {
+@media only screen and (min-width: 750px) {
   .post-detail {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100%;
+    
   }
 }
 
@@ -419,7 +423,7 @@ body {
   color: #000000;
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .post-article .card-header {
     
   }
@@ -430,7 +434,7 @@ body {
   
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .post-article .card-information {
     
   }
@@ -450,14 +454,14 @@ body {
   margin: 1rem auto;
   border: 5px solid var(--basecolor);
   border-radius: 0.5rem;
-  display: -webkit-box;
+ 
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
+ 
       -ms-flex-direction: column;
           flex-direction: column;
   width: 98%;
+  height: 100%;
 }
 
 .post-detail .detail-article .card-header {
@@ -564,7 +568,7 @@ body {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .overall-container .editor {
     width: 100%;
   }
@@ -599,7 +603,9 @@ body {
 }
 
 .overall-container .editor .form-container .input .title-input {
-  width: 96%;
+  max-width: 96%;
+  font-family: "Poppins", sans-serif;
+  
   height: 2rem;
   
 }
@@ -611,9 +617,9 @@ body {
   
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   .overall-container .editor .form-container .input .editable-content {
-    width: 96%;
+    max-width: 96%;
     
   }
 }
@@ -640,14 +646,14 @@ body {
   width: 100%;
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   #new-post-nav .new-Post-btn {
     width: 100%;
     border-radius: 0.5rem;
   }
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   #new-post-nav .new-Post-btn {
     margin: 0.75rem 1rem;
     width: 9rem;
@@ -672,12 +678,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 1rem;
-  margin: 0 auto;
-  max-width: 20rem;
+  padding: 1rem;
+  margin: 0;
+  
 }
 
-@media (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   #blog-detail-info .blog-info {
     max-width: 18.75rem;
   }
@@ -696,19 +702,10 @@ body {
 
 .nav-select {
   width: 100%;
-  position: relative;
+  
 }
 
-.nav-select::before {
-  font-family: 'FontAwesome';
-  content: "\f078";
-  
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  color: #000000;
-  pointer-events: none;
-}
+
 
 .nav-select select {
   -webkit-appearance: none;
@@ -720,6 +717,7 @@ body {
   padding-left: 0.5rem;
   color: #000000;
   cursor: pointer;
+  text-align: center;
 }
 
 .nav-select select:focus {
@@ -745,7 +743,7 @@ body {
   border-color: #ec6171;
 }
 
-@media (max-width: 550px) {
+@media only screen and (max-width: 550px) {
   html{
         font-size: var(--textmedium);
   }
@@ -759,8 +757,52 @@ body {
   .post-overview .article-container .post-article{
       width: 100%;
   }
+  
+   html{
+        font-size: var(--textsmall);
+  }
+  .title-header{
+      font-size: var(--h1big);
+  }
+  .post-article h2{
+      font-size: var(--headersmall);
+  }
+  
+  .nav-list li{
+      font-size: var(--textsmall);
+  }
+  
+  .extern-link-btn{
+      font-size: var(--buttonsmall);
+  }
+  
+  button{
+      font-size: var(--buttonsmall);
+  }
+  
+  #sign-in-or-out-button{
+      margin-bottom: 1rem;
+  }
+  select{
+      font-size: var(--textsmall);
+      font-family: "Poppins", sans-serif;
+      font-weight: bold;
+  }
+  .post-article{
+      
+      border-width: var(--bordersmall);
+      margin-bottom: 0.5rem;
+  }
+  
+  .overall-container .editor{
+      border-width: var(--bordersmall);
+  }
+  
+  .overall-container .editor .form-container .input .title-input{
+      font-size: var(--textsmall);
+  }
 }
-@media (min-width: 550px) {
+@media only screen and (min-width: 550px) {
     html{
         font-size: var(--textbig);
   }
@@ -772,6 +814,10 @@ body {
   }
   
   .nav-list li{
+      font-size: var(--textbig);
+  }
+  
+  .overall-container .editor .form-container .input .title-input{
       font-size: var(--textbig);
   }
   
@@ -792,6 +838,12 @@ body {
   .post-overview .article-container .post-article{
       width: 96%;
   }
+  .post-article{
+      
+      border-width: var(--borderbig);
+      margin-bottom: 0.5rem;
+  }
+  
   
   
 }

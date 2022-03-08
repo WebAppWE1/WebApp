@@ -59,7 +59,7 @@ and open the template in the editor.
                 <!-- <label for="blogs">Wähle einen Blog aus:</label> -->
                 <select id="blogs" name="blogs" id="blogs-select">
                     <option value="" selected disabled hidden>
-                        Bitte wählen Sie einen Blog aus!
+                        %blogname
                     </option>
                     <option value="/overview/%id">
                         %blogname (%postCount)
@@ -91,9 +91,9 @@ and open the template in the editor.
                     <header>
                         <h2><a class="card-header bold" href="/detail/%id/ofBlog/%blogId">%postname</a></h2>
                         <div class="card-information">
-                            <p><span class="italic underline">Erstellt am:</span> %formatedCreationDate</p>
-                            <p><span class="italic underline">Zuletzt aktualisiert:</span> %formatedAlterationDate</p>
-                            <p><span class="italic underline">Kommentare:</span> %commentCount</p>
+                            <p><span class="underline">Erstellt am:</span> %formatedCreationDate</p>
+                            <p><span class="underline">Zuletzt aktualisiert:</span> %formatedAlterationDate</p>
+                            <p><span class="underline">Kommentare:</span> %commentCount</p>
                         </div>
                     </header>
                     <footer>
