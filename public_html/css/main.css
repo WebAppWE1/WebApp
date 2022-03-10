@@ -22,13 +22,13 @@ section, summary, time, mark, audio, video {
     --additionalcolor: #e9e9d9;
     --textshadow: #867e7e;
     
-    --headerbig: 18px;
-    --headermedium: 20px;
-    --headersmall: 16px;
+    --headerbig: 20px;
+    --headermedium: 30px;
+    --headersmall: 14px;
     
     --textbig: 14px;
     --textmedium: 12px;
-    --textsmall: 10px;
+    --textsmall: 12px;
     
     --buttonbig: 12px;
     --buttonsmall: 10px;
@@ -37,7 +37,18 @@ section, summary, time, mark, audio, video {
     
     --borders: 2px solid #000000;
     --bordersmall: 2px;
-    --borderbig: 5px;
+    --borderbig: 3px;
+}
+
+.detail-article a img{
+    width: 90%;
+    height: auto; 
+    
+}
+
+textarea{
+    resize: vertical;
+    font-family: "Poppins", sans-serif;
 }
 
 
@@ -265,6 +276,9 @@ html .underline {
     height: 30rem;
     
     border-right: var(--borders);
+    
+    position: sticky;
+    top: 0;
   }
   .main-body #blog-navbar #blog-detail-info {
     width: 100%;
@@ -292,6 +306,7 @@ html .underline {
     background-color: var(--additionalcolor);
     position: -webkit-sticky;
     position: sticky;
+    z-index: 3;
     top: 0;
   }
 }
@@ -411,8 +426,20 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 1rem;
-  border: 5px solid var(--basecolor);
-  border-radius: 0.75rem;
+  /*border: 5px solid var(--basecolor);
+  border-radius: 0.75rem;*/
+  
+   
+   border-style: solid;
+  border-color: var(--basecolor);
+  background-color: white;
+  /*text-align: center;*/
+  /*color: var(--basecolor);*/
+  color: black;
+}
+
+.post-article h2{
+    color: white;
 }
 
 .post-article .card-header {
@@ -420,7 +447,7 @@ body {
   padding: 0.5rem 1rem 0.75rem 1rem;
   background-color: var(--basecolor);
   text-decoration: none;
-  color: #000000;
+  color: white;
 }
 
 @media only screen and (min-width: 480px) {
@@ -431,12 +458,12 @@ body {
 
 .post-article .card-information {
   margin: 0.75rem 1rem;
-  
+  align-self: inherit;
 }
 
 @media only screen and (min-width: 480px) {
   .post-article .card-information {
-    
+    text-align: initial;
   }
 }
 
@@ -452,8 +479,10 @@ body {
 
 .post-detail .detail-article {
   margin: 1rem auto;
-  border: 5px solid var(--basecolor);
-  border-radius: 0.5rem;
+  padding-bottom: 2rem;
+  /*border: 5px solid var(--basecolor);*/
+  /*border-bottom: dotted 1px green;*/
+  
  
   display: -ms-flexbox;
   display: flex;
@@ -465,16 +494,19 @@ body {
 }
 
 .post-detail .detail-article .card-header {
-  padding: 0.5rem 1rem 0.75rem 1rem;
-  border-color: var(--basecolor);
-  background-color: var(--basecolor);
+  padding: 0.5rem 1rem 0.5rem 0rem;
+  
+  
   
 }
 
 .card-header {
-  padding: 0.5rem 1rem 0.75rem 1rem;
-  border-color: var(--basecolor);
+  padding: 0.5rem 1rem 0.5rem 0rem;
+  border-bottom-color: var(--basecolor);
   background-color: var(--basecolor);
+  text-align: center;
+  /*color: var(--basecolor);*/
+  color: white;
   
 }
 
@@ -485,7 +517,8 @@ body {
 
 
 .post-detail .detail-article .card-information {
-  padding: 0.5rem 1rem 0.75rem 1rem;
+  padding: 1rem 1rem 0.75rem 1rem;
+  
 }
 
 .post-detail .detail-article section {
@@ -503,17 +536,12 @@ body {
 }
 
 .post-detail .comments {
-  border: 5px solid var(--basecolor);
+  /*border: 5px solid var(--basecolor);*/
   border-radius: 0.5rem;
   width: 98%;
 }
 
-.post-detail .comments .section-header {
-  
-  padding: 0.5rem 0.3rem 0.5rem 1rem;
-  background-color: var(--basecolor);
-  width: 98%;
-}
+
 
 .post-detail .comments .comment-article {
   display: -webkit-box;
@@ -523,10 +551,14 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 2px solid var(--basecolor);
-  border-radius: 0.5rem;
+  border: none;
+  border-bottom: dotted 1px green;
+  
+  border-radius: 0rem;
   padding: 0.75rem 1.25rem;
   width: 90%;
+  margin-left: 0rem;
+  margin-right: 0rem;
 }
 
 .post-detail .comments .comment-article .comment-content {
@@ -564,8 +596,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 5px solid var(--basecolor);
-  border-radius: 0.5rem;
+  /*border: 5px solid var(--basecolor);
+  border-radius: 0.5rem;*/
 }
 
 @media only screen and (max-width: 480px) {
@@ -613,7 +645,7 @@ body {
 .overall-container .editor .form-container .input .editable-content {
     display: inline-block;
   overflow: auto;
-  height: 12rem;
+  
   
 }
 
@@ -764,6 +796,9 @@ body {
   .title-header{
       font-size: var(--h1big);
   }
+  .card-header {
+      font-size: var(--headersmall);
+  }
   .post-article h2{
       font-size: var(--headersmall);
   }
@@ -777,6 +812,10 @@ body {
   }
   
   button{
+      font-size: var(--buttonsmall);
+  }
+  
+  .commentmeta{
       font-size: var(--buttonsmall);
   }
   
@@ -801,10 +840,27 @@ body {
   .overall-container .editor .form-container .input .title-input{
       font-size: var(--textsmall);
   }
+  .detail-article{
+    font-size: var(--textsmall);
+}
+  .post-detail .detail-article .card-information {
+    font-size: var(--buttonsmall);
+}
+
 }
 @media only screen and (min-width: 550px) {
+    
+  .post-detail .detail-article .card-information {
+    font-size: var(--buttonbig);
+}
     html{
         font-size: var(--textbig);
+  }
+  textarea{
+      font-size: var(--textbig);
+  }
+  .card-header {
+      font-size: var(--headerbig);
   }
   .title-header{
       font-size: var(--h1big);
@@ -822,6 +878,10 @@ body {
   }
   
   .extern-link-btn{
+      font-size: var(--buttonbig);
+  }
+  
+  .commentmeta{
       font-size: var(--buttonbig);
   }
   
@@ -843,10 +903,28 @@ body {
       border-width: var(--borderbig);
       margin-bottom: 0.5rem;
   }
+  }
+  
+
+
+  .post-article{
+      position: relative;
+      z-index: 0;
+  }
+  
+  .footer{
+      position: absolute;
+      bottom:0;
+      z-index: 1;
+      
+  }
+  
+  .card-information{
+      padding-bottom: 3rem;
+  }
   
   
-  
-}
+ 
 
 
 

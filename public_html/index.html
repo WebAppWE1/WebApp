@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="de">
 
 <head>
@@ -96,7 +91,7 @@ and open the template in the editor.
                             <p><span class="underline">Kommentare:</span> %commentCount</p>
                         </div>
                     </header>
-                    <footer>
+                    <footer class="footer">
                         <nav>
                             <button class="Action-Button" type="button"
                                 data-path="/edit/%id/ofBlog/%blogId">Edit</button>
@@ -133,7 +128,7 @@ and open the template in the editor.
         </div>
 
         <div id="comment-section-scheme" class="comments">
-            <h2 class="section-header"><span class="bold">Kommentare</span></h2>
+            <h2 class="card-header"><span class="bold">Kommentare</span></h2>
 
             <div class="comments-container">
                 <article class="comment-article" data-blogid="%blogId" data-postid="%postId" data-commentid="%id">
@@ -141,8 +136,8 @@ and open the template in the editor.
                         "%commentText"
                     </section>
                     <section class="comment-information">
-                        <p><span class="italic">By %creatorName</span></p>
-                        <p>%formatedCreationDate</p>
+                        <p class="commentmeta"><span class="italic">By %creatorName</span></p>
+                        <p class="commentmeta"><span class="italic">%formatedCreationDate</span></p>
                     </section>
                     <footer>
                         <button class="Action-Button" type="button" data-action="commentDelete">Delete</button>
@@ -191,7 +186,7 @@ and open the template in the editor.
                         </li>
                         <li class="input">
                             <label for="content">Inhalt des Posts:</label>
-                            <textarea id="content" class="editable-content" name="content" rows="5"></textarea>
+                            <textarea id="content" class="editable-content" name="content" rows="10"></textarea>
                         </li>
                         <li class="buttons">
                             <nav>
