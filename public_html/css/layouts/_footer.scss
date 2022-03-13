@@ -1,0 +1,12 @@
+@import "../helpers/variables";
+
+.footer {
+    bottom: 0;
+    padding: 2rem 1rem;
+    border-top: 2px solid $black;
+    background-color: $white;
+
+    .footer-text {
+        text-align: center;
+    }
+}

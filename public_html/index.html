@@ -24,7 +24,7 @@ and open the template in the editor.
     <link type="text/css" rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="./css/fontAwesome/font-awesome.min.css">
 </head>
 
 <body>
@@ -47,6 +47,10 @@ and open the template in the editor.
         </div>
         <div id="main-section"></div>
     </main>
+    <footer class="footer">
+        <p class="footer-text">Ein Projekt für <span class="italic">WebEngineering I</span> 
+            von Sophie Brenneisen und Tim Weise</p>
+    </footer>
 
     <!-- Templates für die verschiedenen Seiten-Schablonen in view.js -->
     <div id="templates" hidden>
@@ -78,7 +82,8 @@ and open the template in the editor.
             <p>Anzahl Posts: %postCount</p>
             <p>Erstellet am: %formatedCreationDate</p>
             <p>Aktualisiert am: %formatedAlterationDate</p>
-            <a class="Action-Button extern-link-btn" href="%url" data-type="extern">Zum Google-Blog</a>
+            <a class="Action-Button extern-link-btn" href="%url" data-type="extern"><i class="fa fa-link"></i></i>Zum
+                Google-Blog</a>
         </div>
 
         <div id="post-overview-scheme" class="post-overview">
@@ -98,9 +103,10 @@ and open the template in the editor.
                     </header>
                     <footer>
                         <nav>
-                            <button class="Action-Button" type="button"
-                                data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                            <button class="Action-Button" type="button" data-action="postDelete">Delete</button>
+                            <button class="Action-Button" type="button" data-path="/edit/%id/ofBlog/%blogId"><i
+                                    class="fa fa-pencil-square-o"></i>Edit</button>
+                            <button class="Action-Button" type="button" data-action="postDelete"><i
+                                    class="fa fa-trash"></i>Delete</button>
                         </nav>
                     </footer>
                 </article>
@@ -125,8 +131,10 @@ and open the template in the editor.
                 </section>
                 <footer>
                     <nav>
-                        <button class="Action-Button" type="button" data-path="/edit/%id/ofBlog/%blogId">Edit</button>
-                        <button class="Action-Button" type="button" data-action="postDelete">Delete</button>
+                        <button class="Action-Button" type="button" data-path="/edit/%id/ofBlog/%blogId"><i
+                                class="fa fa-pencil-square-o"></i>Edit</button>
+                        <button class="Action-Button" type="button" data-action="postDelete"><i
+                                class="fa fa-trash"></i>Delete</button>
                     </nav>
                 </footer>
             </article>
@@ -145,7 +153,8 @@ and open the template in the editor.
                         <p>%formatedCreationDate</p>
                     </section>
                     <footer>
-                        <button class="Action-Button" type="button" data-action="commentDelete">Delete</button>
+                        <button class="Action-Button" type="button" data-action="commentDelete"><i
+                                class="fa fa-trash"></i>Delete</button>
                     </footer>
                 </article>
             </div>
@@ -168,10 +177,10 @@ and open the template in the editor.
                         </li>
                         <li class="buttons">
                             <nav>
-                                <button class="Action-Button" type="button" value="cancle"
-                                    data-action="cancle">Abbrechen</button>
-                                <button class="Action-Button" type="button" value="save"
-                                    data-action="save">Speichern</button>
+                                <button class="Action-Button" type="button" value="cancle" data-action="cancle"><i
+                                        class="fa fa-undo"></i>Abbrechen</button>
+                                <button class="Action-Button" type="button" value="save" data-action="save"><i
+                                        class="fa fa-floppy-o"></i>Speichern</button>
                             </nav>
                         </li>
                     </ul>
@@ -195,10 +204,10 @@ and open the template in the editor.
                         </li>
                         <li class="buttons">
                             <nav>
-                                <button class="Action-Button" type="button" value="cancle"
-                                    data-action="cancle">Abbrechen</button>
-                                <button class="Action-Button" type="button" value="save"
-                                    data-action="save">Speichern</button>
+                                <button class="Action-Button" type="button" value="cancle" data-action="cancle"><i
+                                        class="fa fa-undo"></i>Abbrechen</button>
+                                <button class="Action-Button" type="button" value="save" data-action="save"><i
+                                        class="fa fa-floppy-o"></i>Speichern</button>
                             </nav>
                         </li>
                     </ul>

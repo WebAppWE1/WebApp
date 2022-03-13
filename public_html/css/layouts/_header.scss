@@ -14,13 +14,13 @@
 
 
     @include breakpoint("desktop") {
-      background-color: $sleekyGrey;
+      background-color: $header;
     }
 
     .title-header {
       font-size: 3rem;
       font-weight: bold;
-      text-shadow: 2px 2px 4px $sleekyGrey;
+      text-shadow: 2px 2px 4px $dark-grey;
       margin: auto 1.5rem;
       text-align: center;
   

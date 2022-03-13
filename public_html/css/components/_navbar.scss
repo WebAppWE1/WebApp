@@ -67,8 +67,8 @@
 .nav-list {
 
     li {
-        background-color: $marine;
-        border: 1px solid $marine;
+        background-color: $secondary;
+        border: 1px solid $secondary;
         border-radius: 0.5rem;
         width: 80%;
         margin: 0.25rem auto;
@@ -76,8 +76,8 @@
         cursor: pointer;
 
         &:hover {
-            background-color: darken($color: $marine, $amount: 15);
-            border-color: darken($color: $marine, $amount: 15);
+            background-color: $accessoire;
+            border-color: $accessoire;
         }
     }
 }

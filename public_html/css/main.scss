@@ -2,9 +2,9 @@
 @import "./helpers/resets";
 @import "./helpers/variables";
 @import "./helpers/mixins";
-@import "./helpers/placeholders";
 @import "./helpers/fonts";
 // import of Layout files
+@import "./layouts/footer";
 @import "./layouts/header";
 @import "./layouts/navbar";
 @import "./layouts/main-section";

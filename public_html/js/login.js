@@ -61,14 +61,16 @@
         var user = GoogleAuth.currentUser.get();
         var isAuthorized = user.hasGrantedScopes(SCOPE);
         if (isAuthorized) {
-            $('#sign-in-or-out-button').html('Abmelden');
+            $('#sign-in-or-out-button').html('<i class="fa fa-sign-in"></i>Abmelden');
             $('#auth-status').html('Angemeldet bei Google');
+            document.querySelector('.main-body').style.display = 'flex';
             console.log("---------setSigninStatus: Angemeldet---------");
             model.setLoggedIn(true);
             router.navigateToPage(window.location.pathname);
         } else {
-            $('#sign-in-or-out-button').html('Anmelden');
+            $('#sign-in-or-out-button').html('<i class="fa fa-sign-in"></i>Anmelden');
             $('#auth-status').html('Abgemeldet bei Google'); 
+            document.querySelector('.main-body').style.display = 'none';
             console.log("---------setSigninStatus: Abgemeldet---------");
             model.setLoggedIn(false);
             router.navigateToPage('/'); 

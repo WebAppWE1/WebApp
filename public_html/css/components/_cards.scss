@@ -3,7 +3,7 @@
 
 // overall-background
 body {
-  background-color: $white;
+  background-color: $background;
 }
 
 // Post-Overview cards
@@ -11,13 +11,14 @@ body {
   display: flex;
   flex-direction: column;
   margin: 1rem;
-  border: 5px solid $feather;
+  border: 5px solid $secondary;
   border-radius: 0.75rem;
+  background-color: $white;
 
   .card-header {
     display: block;
     padding: 0.5rem 1rem 0.75rem 1rem;
-    background-color: $feather;
+    background-color: $secondary;
     text-decoration: none;
     color: $black;
 
@@ -47,17 +48,19 @@ body {
 
 // Post-Detail card + comments
 .post-detail {
+  
   .detail-article {
     margin: 1rem auto;
-    border: 5px solid $feather;
+    border: 5px solid $secondary;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
+    background-color: $white;
 
     .card-header {
       padding: 0.5rem 1rem 0.75rem 1rem;
-      border-color: $feather;
-      background-color: $feather;
+      border-color: $secondary;
+      background-color: $secondary;
       font-size: 1.25rem;
     }
 
@@ -80,21 +83,19 @@ body {
   }
 
   .comments {
-    border: 5px solid $feather;
-    border-radius: 0.5rem;
     width: 98%;
 
     .section-header {
       font-size: 1.25rem;
       padding: 0.5rem 0 0.5rem 1rem;
-      background-color: $feather;
-      width: 98%;
+      background-color: $secondary;
+      border-radius: 0.5rem 0.5rem 0 0;
     }
 
     .comment-article {
       display: flex;
       flex-direction: column;
-      border: 5px solid $feather;
+      border: 5px solid $secondary;
       border-radius: 0.5rem;
       padding: 0.75rem 1.25rem;
 
@@ -120,15 +121,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 
   .editor {
     display: flex;
     flex-direction: column;
-    border: 5px solid $feather;
-    border-radius: 0.5rem;
+    width: 75%;
+    max-width: 56.25rem;
+    // border: 5px solid $feather;
+    // border-radius: 0.5rem;
 
     @include breakpoint("tablet", "max") {
       width: 100%;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      padding: 0.5rem 0 0.5rem 1rem;
+      background-color: $secondary;
+      border-radius: 0.5rem 0.5rem 0 0;
     }
 
     .form-container {
@@ -143,28 +154,18 @@ body {
 
         & :nth-child(2) {
           margin: 0.5rem 1rem 0.5rem 2rem;
-          border: 2px solid #ebe9ed;
+          border: 2px solid $grey;
           padding: 1px 2px;
-        }
-
-        .title-input {
-          max-width: 12rem;
         }
 
         .editable-content {
           overflow: auto;
           height: 12rem;
-
-          @include breakpoint("tablet") {
-            width: 20rem;
-          }
         }
-      }
 
-      h2 {
-        font-size: 1.25rem;
-        padding: 0.5rem 1rem 0.75rem 1rem;
-        background-color: $feather;
+        .post-content {
+          background-color: $white;
+        }
       }
 
       .buttons {

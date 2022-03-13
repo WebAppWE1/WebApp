@@ -2,10 +2,17 @@
 @import "../helpers/mixins";
 
 .Action-Button {
-  padding: 0.25rem 0.5rem;
-  background-color: $forest;
-  border-color: $forest;
+  padding: 0.5rem 1rem;
+  background-color: $buttons;
+  border: none;
   border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: $button-fonts;
+
+  i {
+    padding-right: 0.5rem;
+  }
 }
 
 #new-post-nav {
@@ -25,7 +32,6 @@
 }
 
 .extern-link-btn {
-    border: 1px solid $forest;
+    border: 1px solid $buttons;
     text-decoration: none;
-    color: $black;
 }
