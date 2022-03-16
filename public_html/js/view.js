@@ -56,6 +56,10 @@ const blogInfo = {
     page.removeAttribute("id");
     data.setFormatDates(false);
     helper.setDataInfo(page, data);
+    
+    let select = document.querySelector("SELECT");
+    let newArr = Array.from(select.options);
+    newArr[0].innerHTML=data.blogname;
 
     return page;
   },
@@ -69,6 +73,7 @@ const postOverview = {
     page.removeAttribute("id");
 
     let button = page.querySelector("nav");
+    
     if (data.length === 0) {
       data.blogId = emptyDataBlogId;
       helper.setDataInfo(button, data);
@@ -87,7 +92,11 @@ const postOverview = {
     }
     page.append(container);
     page.addEventListener("click", helper.handleDelete);
-
+    
+    
+    
+    
+    
     return page;
   },
 };
