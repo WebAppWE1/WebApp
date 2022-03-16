@@ -54,7 +54,7 @@
                 <!-- <label for="blogs">Wähle einen Blog aus:</label> -->
                 <select id="blogs" name="blogs" >
                     <option value="" selected disabled hidden>
-                        %blogname
+                        -Blog auswählen-
                     </option>
                     <option value="/overview/%id">
                         %blogname (%postCount)
@@ -86,9 +86,9 @@
                     <header>
                         <h2><a class="card-header bold" href="/detail/%id/ofBlog/%blogId">%postname</a></h2>
                         <div class="card-information">
-                            <p><span class="underline">Erstellt am:</span> %formatedCreationDate</p>
-                            <p><span class="underline">Zuletzt aktualisiert:</span> %formatedAlterationDate</p>
-                            <p><span class="underline">Kommentare:</span> %commentCount</p>
+                            <p>Erstellt am:<span class="italic"> %formatedCreationDate</span></p>
+                            <p>Zuletzt aktualisiert:<span class="italic"> %formatedAlterationDate</span></p>
+                            <p>Kommentare:<span class="italic"> %commentCount</span></p>
                         </div>
                     </header>
                     <footer class="footer">
