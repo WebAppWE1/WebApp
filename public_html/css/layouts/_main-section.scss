@@ -4,6 +4,7 @@
 
   @include breakpoint("tablet") {
     margin: 2rem;
+    overflow: auto;
   }
 
   @include breakpoint("desktop") {
